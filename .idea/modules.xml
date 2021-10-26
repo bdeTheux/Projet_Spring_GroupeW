@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BackendProduct/BackendProduct.iml" filepath="$PROJECT_DIR$/BackendProduct/BackendProduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BackendUser/BackendUser.iml" filepath="$PROJECT_DIR$/BackendUser/BackendUser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BackendBasket/Backendbasket.iml" filepath="$PROJECT_DIR$/BackendBasket/Backendbasket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" filepath="$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" filepath="$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" filepath="$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Projet_Spring_GroupeW.iml" filepath="$PROJECT_DIR$/.idea/Projet_Spring_GroupeW.iml" />
+    </modules>
+  </component>
+</project>
