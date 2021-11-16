@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="053f0c8f-4535-4a96-b187-9beef6145cf1" name="Changes" comment="" />
+=======
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="" />
+>>>>>>> 5882abc3f63848797a574a5adaf7c449259732dd
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +18,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="1zqzt5djHfPsZcmeiQIAwoP5VLO" />
+=======
+  <component name="ProjectId" id="202HOgll03t7yox0ilwX27uMWNy" />
+>>>>>>> 5882abc3f63848797a574a5adaf7c449259732dd
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -19,17 +31,74 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/BackendProduct" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BackendBasket" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.FrontendDetailProductApplication">
+    <configuration name="BackendProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackendProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.BackendProduct.BackendProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackendUser" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.BackendUser.BackendUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendbasketApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Backendbasket" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.Backendbasket.BackendbasketApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendBasketApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendBasket" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendBasket.FrontendBasketApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendDetailProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendDetailProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendDetailProduct.FrontendDetailProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendListProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendListProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendListProduct.FrontendListProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> 5882abc3f63848797a574a5adaf7c449259732dd
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="053f0c8f-4535-4a96-b187-9beef6145cf1" name="Changes" comment="" />
       <created>1634890618562</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634890618562</updated>
       <workItem from="1634890620097" duration="51000" />
+=======
+      <changelist id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="" />
+      <created>1635235739019</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635235739019</updated>
+      <workItem from="1635235742186" duration="84000" />
+>>>>>>> 5882abc3f63848797a574a5adaf7c449259732dd
     </task>
     <servers />
   </component>
