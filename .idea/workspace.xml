@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="68879f75-8fd1-43ca-bf3c-af613eb2e249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BackendUser/src/main/java/Backend/BackendUser/model/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="202B05wHLfkuAkHXnYNPj4rUD0n" />
+  <component name="ProjectId" id="202HOgll03t7yox0ilwX27uMWNy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,17 +22,61 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/BackendUser" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BackendBasket" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.FrontendDetailProductApplication">
+    <configuration name="BackendProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackendProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.BackendProduct.BackendProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BackendUser" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.BackendUser.BackendUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendbasketApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Backendbasket" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Backend.Backendbasket.BackendbasketApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendBasketApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendBasket" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendBasket.FrontendBasketApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendDetailProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendDetailProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendDetailProduct.FrontendDetailProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FrontendListProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="FrontendListProduct" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Frontend.FrontendListProduct.FrontendListProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="68879f75-8fd1-43ca-bf3c-af613eb2e249" name="Changes" comment="" />
-      <created>1635232579199</created>
+      <changelist id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="" />
+      <created>1635235739019</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1635232579199</updated>
-      <workItem from="1635232581885" duration="43000" />
+      <updated>1635235739019</updated>
+      <workItem from="1635235742186" duration="84000" />
     </task>
     <servers />
   </component>

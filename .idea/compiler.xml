@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Backendbasket" />
+        <module name="BackendProduct" />
+        <module name="BackendUser" />
+        <module name="FrontendBasket" />
+        <module name="FrontendListProduct" />
+        <module name="FrontendDetailProduct" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Backendbasket" target="11" />
+      <module name="BackendProduct" target="11" />
+      <module name="BackendUser" target="11" />
+      <module name="FrontendBasket" target="11" />
+      <module name="FrontendDetailProduct" target="11" />
+      <module name="FrontendListProduct" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BackendProduct" options="-parameters" />
+      <module name="BackendUser" options="-parameters" />
+      <module name="Backendbasket" options="-parameters" />
+      <module name="FrontendBasket" options="-parameters" />
+      <module name="FrontendDetailProduct" options="-parameters" />
+      <module name="FrontendListProduct" options="-parameters" />
+    </option>
+  </component>
+</project>
