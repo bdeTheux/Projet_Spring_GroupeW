@@ -8,7 +8,6 @@
       <module fileurl="file://$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" filepath="$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" />
       <module fileurl="file://$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" filepath="$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" />
       <module fileurl="file://$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" filepath="$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Projet_Spring_GroupeW.iml" filepath="$PROJECT_DIR$/.idea/Projet_Spring_GroupeW.iml" />
     </modules>
   </component>
 </project>
