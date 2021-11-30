@@ -6,14 +6,16 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Component
-@FeignClient(name="candyAPI", url="localhost:9001")
+@FeignClient(name="candies", url="http://localhost:8000/")
 public interface CandyProxy {
 
+    @GetMapping("/candies")
+    List<Candy> findAll(@RequestParam(required=false)String category, @RequestParam(required=false)Integer min, @RequestParam(required=false)Integer max);
     @GetMapping
-    Iterable<Candy>findAll();
-    @GetMapping
-    Iterable<Candy>findAllByCategory(@RequestParam(required = false) Category theme);
+    Iterable<Candy>findAllByCategory(@RequestParam(required = false) Category category);
 
     @GetMapping("/candies/{id}")
     Candy findById(@PathVariable("id") int id);
@@ -26,4 +28,11 @@ public interface CandyProxy {
 
     @DeleteMapping("/candies/{id}")
     void deleteCandy(@PathVariable("id") int id);
+
+    // ???
+    @PostMapping
+    void saveCandy(@RequestBody Candy candy);
+
+    @PostMapping
+    List<Category> getCategories();
 }

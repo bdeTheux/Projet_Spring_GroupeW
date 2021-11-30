@@ -4,15 +4,15 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties("Frontend.FrontendListProduct")
+@ConfigurationProperties("frontend.list.product")
 public class CustomConfig {
-    private String api;
+    private String secret;
 
-    public String getApi() {
-        return api;
+    public String getSecret() {
+        return secret;
     }
 
-    public void setApi(String api) {
-        this.api = api;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 }
