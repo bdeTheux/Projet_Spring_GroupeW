@@ -4,6 +4,7 @@ package Frontend.FrontendListProduct.controller;
 import Frontend.FrontendListProduct.model.Candy;
 import Frontend.FrontendListProduct.model.Category;
 import Frontend.FrontendListProduct.proxy.CandyProxy;
+import com.ctc.wstx.shaded.msv_core.driver.textui.Debug;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class CandyListController {
     @GetMapping("/candies")
     public String candies(@RequestParam(required = false)Category category, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
         model.addAttribute("candies", listCandies());//category==null ? proxy.findAll(): proxy.findAllByCategory(category));
-        //model.addAttribute("candy", new Candy());
+        model.addAttribute("candy", new Candy());
         model.addAttribute("categories", getCategories());
         return "candies";
     }
@@ -39,10 +40,13 @@ public class CandyListController {
     public List<Candy> listCandies(){
         return proxy.findAll(null, null, null);
     }
-    @PostMapping
+
+    @PostMapping("/candies")
     public ModelAndView createCandy(@ModelAttribute Candy candy) {
+
         proxy.saveCandy(candy);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/candies");
     }
+
 
 }

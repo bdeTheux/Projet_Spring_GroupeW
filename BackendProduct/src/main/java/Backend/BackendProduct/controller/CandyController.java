@@ -37,20 +37,21 @@ public class CandyController {
 
     //Get one by id
     @GetMapping("/{id}")
-    public Candy getCandy(@PathVariable("id") int id) {
+    public Candy findById(@PathVariable("id") int id) {
         return service.findById(id);
     }
 
     //Delete one
     @DeleteMapping("delete/{id}")
-    public ModelAndView deleteCandy(@PathVariable("id") int id) {
+    public void deleteCandy(@PathVariable("id") int id) {
         service.deleteCandy(id);
-        return new ModelAndView("redirect:/");
+        //return new ModelAndView("redirect:/");
     }
     //Update one
     @PutMapping("/{id}")
     public String updateCandy(@PathVariable("id") int id, Model model) {
         model.addAttribute("candy", service.findById(id));
+        service.updateCandy((Candy)model, id);
         System.out.println("update get " + service.findById(id));
         return "update";
     }

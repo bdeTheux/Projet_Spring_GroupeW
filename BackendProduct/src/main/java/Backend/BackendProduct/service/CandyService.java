@@ -47,8 +47,11 @@ public class CandyService {
     }
 
     public void deleteCandy (int id){
-        Candy candy = repo.findById(id).orElseThrow(InternalError::new);
-        repo.delete(candy);
+        try{
+            repo.deleteById(id);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }
