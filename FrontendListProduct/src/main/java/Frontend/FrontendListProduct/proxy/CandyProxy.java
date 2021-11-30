@@ -23,16 +23,17 @@ public interface CandyProxy {
     @PutMapping("/candies/{id}")
     void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy);
 
-    @PostMapping("/candies")
+    /*@PostMapping("/candies")
     void createCandy(@RequestBody Candy candy);
+     */
 
     @DeleteMapping("/candies/{id}")
     void deleteCandy(@PathVariable("id") int id);
 
     // ???
-    @PostMapping
+    @PostMapping("/candies")
     void saveCandy(@RequestBody Candy candy);
 
-    @PostMapping
+    @PostMapping("/candies")
     List<Category> getCategories();
 }
