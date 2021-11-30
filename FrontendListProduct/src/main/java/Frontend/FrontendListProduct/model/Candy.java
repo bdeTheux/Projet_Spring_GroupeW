@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 //add Entity? to depedencies
-@Entity(name="candies")
+//@Entity(name="candies")
 @Data
 public class Candy {
 

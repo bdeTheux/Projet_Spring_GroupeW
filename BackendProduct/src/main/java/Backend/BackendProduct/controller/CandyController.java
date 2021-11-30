@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -65,8 +66,8 @@ public class CandyController {
         }else{
             return (List<Candy>) service.findAll();
         }
-
     }
+
 
 
 }
