@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -25,8 +26,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="BackendProduct" options="-parameters --add-modules java.base" />
-      <module name="BackendUser" options="-parameters --add-modules java.base" />
+      <module name="BackendProduct" options="-parameters" />
+      <module name="BackendUser" options="-parameters" />
       <module name="Backendbasket" options="-parameters" />
       <module name="FrontendBasket" options="-parameters" />
       <module name="FrontendDetailProduct" options="-parameters" />

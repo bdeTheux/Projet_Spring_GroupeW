@@ -37,7 +37,7 @@ public class CandyController {
 
     //Get one by id
     @GetMapping("/{id}")
-    public Candy getLegoKit(@PathVariable("id") int id) {
+    public Candy getCandy(@PathVariable("id") int id) {
         return service.findById(id);
     }
 

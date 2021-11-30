@@ -30,10 +30,10 @@
             </figure>
         </div>
         <div class="d-flex flex-column product-details">
-            <h1>power candy</h1>
-            <p>detailDescription: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod facilis officia illo debitis eveniet autem dignissimos, ducimus, maxime porro iusto qui culpa similique! Quia tempora esse, ipsam dicta fugiat est?</p>
-            <h2>50$</h2>
-            <p class="category_product-details">category</p>
+            <h1 th:text="${candy.name}">power candy</h1>
+            <p th:text="${candy.detailDescription}">detailDescription</p>
+            <h2 th:text="${candy.price}">50$</h2>
+            <p th:text="${candy.category}" class="category_product-details">category</p>
         </div>
     </div>
     <div class="d-flex product-comments">
