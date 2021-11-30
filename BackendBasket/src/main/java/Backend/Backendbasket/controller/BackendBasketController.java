@@ -7,21 +7,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/Basket")
 public class BackendBasketController {
 
     private BackendBasketService service;
 
-    @GetMapping("/{id_user}")
-    public List<BackendBasket> getBasketByUser(@PathVariable("id_user") int id_user) {
-        return service.findAll(id_user);
+    public BackendBasketController(BackendBasketService service) {
+        this.service = service;
+    }
+
+    @GetMapping()
+    public Iterable<BackendBasket> findAllById_user(@RequestParam() int id_user) {
+        return service.findAllById_user(id_user);
     }
     @GetMapping("/{id}")
-    public BackendBasket getBasketById(@PathVariable("id") int id) {
+    public BackendBasket findById(@PathVariable("id") int id) {
         return service.findById(id);
     }
 
+    @PostMapping()
+    public void addBasket (BackendBasket basket){ service.saveBasket(basket);}
+
     @PutMapping("/{id}")
-    public void putBasket(@PathVariable("id") int id, @RequestParam(required = true) int nQuantity) {
+    public void putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity) {
         service.updateQuantity(id, nQuantity);
     }
 
@@ -29,7 +37,8 @@ public class BackendBasketController {
     public void deleteBasket (@PathVariable("id") int id){
         service.deleteProduct(id);
     }
-    public BackendBasketController(BackendBasketService service) {
-        this.service = service;
-    }
+    @GetMapping()
+    void payBasket(){
+        service.payBasket();
+    };
 }
