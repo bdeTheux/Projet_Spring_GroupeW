@@ -7,9 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-@Entity(name="basket")
 @Data
+@Entity(name="basket")
+
 public class BackendBasket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
