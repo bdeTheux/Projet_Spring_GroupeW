@@ -14,8 +14,8 @@ public interface CandyProxy {
 
     @GetMapping("/candies")
     List<Candy> findAll(@RequestParam(required=false)String category, @RequestParam(required=false)Integer min, @RequestParam(required=false)Integer max);
-    @GetMapping
-    Iterable<Candy>findAllByCategory(@RequestParam(required = false) Category category);
+    @GetMapping("/candies")
+    List<Candy>findAllByCategory(@RequestParam(required = false) Category category);
 
     @GetMapping("/candies/{id}")
     Candy findById(@PathVariable("id") int id);
