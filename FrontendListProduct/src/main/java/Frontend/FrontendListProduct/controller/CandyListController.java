@@ -2,6 +2,7 @@ package Frontend.FrontendListProduct.controller;
 
 
 import Frontend.FrontendListProduct.model.Candy;
+import Frontend.FrontendListProduct.model.CandyDTO;
 import Frontend.FrontendListProduct.model.Category;
 import Frontend.FrontendListProduct.proxy.CandyProxy;
 import com.ctc.wstx.shaded.msv_core.driver.textui.Debug;
@@ -25,13 +26,11 @@ public class CandyListController {
 
     @GetMapping("/candies")
     public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
-        //System.out.println("First" + category);
-
+        System.out.println("je passe");
         model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));
-        //System.out.println("ICI" + category);
         //model.addAttribute("candies", listCandies());
-        model.addAttribute("candy", new Candy());
         model.addAttribute("categories", getCategories());
+        model.addAttribute("candy", new CandyDTO());
         return "candies";
     }
 
@@ -57,9 +56,29 @@ public class CandyListController {
     }
 
     @PostMapping("/candies")
-    public ModelAndView createCandy(@ModelAttribute Candy candy) {
+    public ModelAndView createCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category) {
+        System.out.println(" ici" + candy.toString());
+        System.out.println("request = " + category);
+        //System.out.println(Category.PHYSICS.getName().equals(category));
+        //candy.setCategory(Category.ELEMANTARY);
+        //candy.setCategory(Category.ELEMANTARY);
+        String t = category;
+        System.out.println("celui ci : " +t);
+        Candy cand = candy;
+        System.out.println("hello" + Category.MUTATION);
+        //TO DO Switch case
+        if(category.equals(Category.ELEMANTARY.getName())){
+            cand.setCategory(Category.ELEMANTARY);
+        }else if(category.equals(Category.MENTAL.getName())){
+            cand.setCategory(Category.MENTAL);
+        }else if(category.equals(Category.MUTATION.getName())){
+            cand.setCategory(Category.MUTATION);
+        }else{
+            cand.setCategory(Category.PHYSICS);
+        }
+        System.out.println(" cand" + cand);
 
-        proxy.saveCandy(candy);
+        proxy.saveCandy(cand);
         return new ModelAndView("redirect:/candies");
     }
 

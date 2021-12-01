@@ -11,7 +11,7 @@
     <header>
         <div class="w3-bar w3-teal">
             <div class="w3-container">
-                <h1 class="w3-opacity" style="text-shadow:1px 1px 0 #444">The Dose</h1>
+                <a th:href="@{/candies}"><h1 class="w3-opacity" style="text-shadow:1px 1px 0 #444">The Dose</h1></a>
                 <h6 class="w3-opacity w3-lobster">(of candies)</h6>
             </div>
             <div class="w3-bar-item">Profil</div>
@@ -63,6 +63,7 @@
                             <p th:text="${candy.getName()}" class="">Name :</p>
                             <p th:text="${candy.getPrice()}" class="">Price :</p>
                             <p th:text="${candy.getShortDescription()}" class="">description :</p>
+                            <button class="w3-button w3-circle  w3-ripple w3-red" ><i class="fa fa-minus"></i></button>
                         </div>
                 </div>
             </div>
@@ -90,9 +91,10 @@
 
             <label>Price</label>
             <input class="w3-input" type="text" th:field="*{price}">
-            <select class="w3-select" name="option">
+
+            <select class="w3-select" th:name="cat" th:field="*{cat}">
                 <option value="" disabled selected>Category</option>
-                <option th:each="category : ${categories}" th:text="${category.toString()}" value="*{category}" th:field="*{category}">Option 1</option>
+                <option th:each="cat : ${categories}" th:text="${cat}" th:value="${cat}" >Option 1</option>
             </select>
             <p class="w3-row-padding"><input class="w3-btn w3-black" type="submit" value="SUBMIT"></p>
         </form>
