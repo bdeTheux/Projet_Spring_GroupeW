@@ -28,8 +28,7 @@
         <div class="w3-dropdown-hover w3-margin-left w3-margin-top ">
             <button class="w3-button w3-button w3-theme-dark-grey w3-monospace ">Categories</button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a th:each="category : ${categories}" href="#" class="w3-bar-item w3-button" th:text="${category.toString()}">category.getName</a>
-
+                <a th:each="category : ${categories}" th:href="@{/candies(category=${category})}"  class="w3-bar-item w3-button" th:text="${category.toString()}">category.getName</a>
             </div>
 
         </div>
@@ -44,7 +43,7 @@
                 <label>Max price</label>
                 <input class="w3-input w3-border" type="text" placeholder="">
             </div>
-            <button type="button" class="w3-circle">
+            <button type="button" class="w3-button w3-large w3-circle w3-xlarge w3-ripple w3-teal">
                <i class="fa fa-search"></i>Search
             </button>
 

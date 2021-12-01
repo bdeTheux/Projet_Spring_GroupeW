@@ -57,11 +57,11 @@ public class CandyController {
     }
 
     @GetMapping
-    public List<Candy> getCandies(@RequestParam(required=false)Category category,
+    public List<Candy> getCandies(@RequestParam(required=false)String category,
                                   @RequestParam(required=false)Double min,
                                   @RequestParam(required=false)Double max){
         if(category != null){
-            return (List<Candy>) service.findByCategory(category);
+            return (List<Candy>) service.findByCategory(Category.valueOf(category));
         }else if(min != null && max != null){
             return (List<Candy>) service.findByPrice(min, max);
         }else{

@@ -24,12 +24,26 @@ public class CandyListController {
     }
 
     @GetMapping("/candies")
-    public String candies(@RequestParam(required = false)Category category, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
-        model.addAttribute("candies", listCandies());//category==null ? proxy.findAll(): proxy.findAllByCategory(category));
+    public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
+        //System.out.println("First" + category);
+
+        model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));
+        //System.out.println("ICI" + category);
+        //model.addAttribute("candies", listCandies());
         model.addAttribute("candy", new Candy());
         model.addAttribute("categories", getCategories());
         return "candies";
     }
+
+    public List<Candy> findByCategory(String category){
+        for(Category cat: Category.values()){
+            if(cat.getName().equals(category)){
+                return proxy.findAllByCategory(cat);
+            }
+        }
+        return null;
+    }
+
     public List<Category> getCategories(){
         List<Category> cat = new ArrayList<>();
         for(Category c : Category.values()){
@@ -37,6 +51,7 @@ public class CandyListController {
         }
         return cat;
     }
+
     public List<Candy> listCandies(){
         return proxy.findAll(null, null, null);
     }
