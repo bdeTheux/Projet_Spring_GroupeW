@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @Component
-@FeignClient(name="candyAPI", url="http://localhost:8001/")
+@FeignClient(name="candyAPI", url="http://localhost:8000/")
 public interface CandyProxy {
 
     @GetMapping
