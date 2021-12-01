@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties("Frontend.FrontendDetailProduct")
+@ConfigurationProperties("frontend.product.detail")
 public class CustomConfig {
     private String api;
 

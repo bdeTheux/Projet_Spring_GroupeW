@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,800;0,900;1,400&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@100;400;700&display=swap');
+
+:root{
+    font-family: 'Roboto', sans-serif;   
+}
+
+body{
+    margin-top: 1ch;
+}
+
+.product-container{
+    margin-top: 2%;
+}
+#logo{
+    width: 200px;
+}
+
+.image-product{ 
+    height: 20rem; 
+    width: 20rem; 
+    overflow: hidden; 
+    position: relative;
+    img{ 
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;    
+    }
+}
+
+
+.product-details{
+    width: 50%;
+    position: relative;
+
+    h1{
+        font-family: 'Roboto Condensed', sans-serif;
+        //font-style: 700;
+        font-variant: small-caps;
+    }
+    /*
+    h2{
+        position: relative;
+        left: 100%;
+    }
+    */
+}
+
+.category_product-details{
+    color: gray;
+    font-weight: 200;
+    font-style: italic;
+}
+.nav-link{
+    color: #3c2b62;
+    border-radius: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-variant: small-caps;
+}
+
+.nav-link:active, .nav-link:focus, .nav-link:hover{
+    background-color: #3c2b62 !important;
+    color: #e4c1f9;
+}
+.product-comments{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-variant: small-caps;
+}
+

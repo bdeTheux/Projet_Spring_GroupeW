@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Charlie's - The Candies That Gives Power</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/img/logo.svg" type="image/x-icon">
+</head>
+  <body>
+    <ul class="nav justify-content-around align-items-stretch">
+        <li class="nav-item">
+          <h5>
+            <a class="nav-link active" aria-current="page" href="#">The Candies</a>
+          </h5>
+        </li>
+        <li class="nav-item">
+            <img src="/img/logo.png" alt="" id="logo">
+        </li>
+        <li class="nav-item">
+          <h5>
+            <a class="nav-link" href="#">Users</a>
+          </h5>
+        </li>
+    </ul>
+    <div class="d-flex justify-content-center product-container">
+        <div class="image-product-container">
+            <figure class="image-product">            
+                <img src="https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg" alt="">
+            </figure>
+        </div>
+        <div class="d-flex flex-column product-details">
+            <h1 th:text="${candy.name}">N/A</h1>
+            <p th:text="${candy.detailDescription}">N/A</p>
+            <h2 th:text="${candy.price}">N/A</h2>
+            <p th:text="${candy.category}" class="category_product-details">N/A</p>
+        </div>
+    </div>
+    <div class="d-flex product-comments">
+        <h2>Comments</h2>
+    </div>
+    
+
+      
+      
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>
