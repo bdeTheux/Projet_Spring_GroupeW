@@ -11,7 +11,7 @@
     <header>
         <div class="w3-bar w3-teal">
             <div class="w3-container">
-                <a th:href="@{/candies}"><h1 class="w3-opacity" style="text-shadow:1px 1px 0 #444">The Dose</h1></a>
+                <a th:href="@{/candies}" style="text-decoration: none"><h1 class="w3-opacity" style="text-shadow:1px 1px 0 #444">The Dose</h1></a>
                 <h6 class="w3-opacity w3-lobster">(of candies)</h6>
             </div>
             <div class="w3-bar-item">Profil</div>
@@ -63,7 +63,12 @@
                             <p th:text="${candy.getName()}" class="">Name :</p>
                             <p th:text="${candy.getPrice()}" class="">Price :</p>
                             <p th:text="${candy.getShortDescription()}" class="">description :</p>
-                            <button class="w3-button w3-circle  w3-ripple w3-red" ><i class="fa fa-minus"></i></button>
+                            <form method="post" th:action="@{/candies/delete/{id}(id=${candy.id})}">
+                                <button type="submit" class="w3-button w3-circle  w3-ripple w3-red" >
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </form>
+
                         </div>
                 </div>
             </div>

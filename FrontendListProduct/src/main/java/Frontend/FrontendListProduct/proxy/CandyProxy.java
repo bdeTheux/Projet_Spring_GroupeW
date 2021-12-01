@@ -27,7 +27,7 @@ public interface CandyProxy {
     void createCandy(@RequestBody Candy candy);
      */
 
-    @DeleteMapping("/candies/{id}")
+    @DeleteMapping("/candies/delete/{id}")
     void deleteCandy(@PathVariable("id") int id);
 
     // ???

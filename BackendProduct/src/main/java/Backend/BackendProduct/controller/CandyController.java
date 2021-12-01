@@ -42,7 +42,7 @@ public class CandyController {
     }
 
     //Delete one
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteCandy(@PathVariable("id") int id) {
         service.deleteCandy(id);
         //return new ModelAndView("redirect:/");

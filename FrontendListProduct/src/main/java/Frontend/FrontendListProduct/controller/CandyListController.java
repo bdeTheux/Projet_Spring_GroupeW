@@ -57,16 +57,9 @@ public class CandyListController {
 
     @PostMapping("/candies")
     public ModelAndView createCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category) {
-        System.out.println(" ici" + candy.toString());
-        System.out.println("request = " + category);
-        //System.out.println(Category.PHYSICS.getName().equals(category));
-        //candy.setCategory(Category.ELEMANTARY);
-        //candy.setCategory(Category.ELEMANTARY);
         String t = category;
-        System.out.println("celui ci : " +t);
         Candy cand = candy;
-        System.out.println("hello" + Category.MUTATION);
-        //TO DO Switch case
+
         if(category.equals(Category.ELEMANTARY.getName())){
             cand.setCategory(Category.ELEMANTARY);
         }else if(category.equals(Category.MENTAL.getName())){
@@ -76,9 +69,15 @@ public class CandyListController {
         }else{
             cand.setCategory(Category.PHYSICS);
         }
-        System.out.println(" cand" + cand);
 
         proxy.saveCandy(cand);
+        return new ModelAndView("redirect:/candies");
+    }
+
+    @PostMapping("/candies/delete/{id}")
+    public ModelAndView deleteCandy(@PathVariable("id") int id){
+        System.out.println("je suis ici");
+        proxy.deleteCandy(id);
         return new ModelAndView("redirect:/candies");
     }
 
