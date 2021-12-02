@@ -18,4 +18,5 @@ public interface CandiesRepository extends CrudRepository<Candy, Integer> {
     Iterable<Candy> findByPrice(double min, double max);
 
     Iterable<Candy> findByCategory(Category category);
+
 }

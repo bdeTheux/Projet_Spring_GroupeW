@@ -25,56 +25,66 @@
     <!--list of all the candies-->
     <div>
         <!--Filters options -->
-        <div class="w3-dropdown-hover w3-margin-left w3-margin-top ">
-            <button class="w3-button w3-button w3-theme-dark-grey w3-monospace ">Categories</button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a th:each="category : ${categories}" th:href="@{/candies(category=${category})}"  class="w3-bar-item w3-button" th:text="${category.toString()}">category.getName</a>
-            </div>
 
-        </div>
-        <button class="w3-button w3-white w3-border w3-border-black w3-round-large w3-margin-left" >Sort</button>
-        <!--Filters prices -->
-        <div class="w3-row-padding">
-            <div class="w3-twothird	">
-                <label>Min price</label>
-                <input class="w3-input w3-border" type="text" placeholder="0">
+        <form method="get" th:action="@{/candies(category=${category}, order=${order}, min=${min}, max=${max})}">
+            <select class="w3-select" th:name="category">
+                <option value="" disabled selected>Category</option>
+                <option th:each="category : ${categories}" th:text="${category}" th:value="${category}" >Option 1</option>
+            </select>
+
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">
+                    <input type="radio" th:each="order : ${orders}"th:text="${order}" th:id="${order}" name="order" th:value="${order}">
+                    <label th:for="${order}" th:text="${order}" th:value="${order}"></label>
+                </li>
+
+            </ul>
+
+            <!--Filters prices -->
+            <div class="w3-row-padding"  th:object="${priceRange}">
+                <div class="w3-twothird	">
+                    <label>Min price</label>
+                    <input class="w3-input w3-border" type="text" th:field="${priceRange.min}" th:placeholder="0">
+                </div>
+                <div class="w3-third">
+                    <label>Max price</label>
+                    <input class="w3-input w3-border" type="text" th:value="${5}" th:field="${priceRange.max}" th:placeholder="0">
+                </div>
             </div>
-            <div class="w3-third">
-                <label>Max price</label>
-                <input class="w3-input w3-border" type="text" placeholder="">
-            </div>
-            <button type="button" class="w3-button w3-large w3-circle w3-xlarge w3-ripple w3-teal">
-               <i class="fa fa-search"></i>Search
+            <button type="submit" class="w3-button w3-large w3-circle w3-xlarge w3-ripple w3-teal">
+                <i class="fa fa-search"></i>Search
             </button>
+        </form>
 
-        </div>
 
 
-        <section class="w3-container w3-content w3-center w3-padding-64 w3-twothird">
-            <h3>Candies</h3>
-            <div class="w3-row w3-padding-32">
-                <div th:if="${candies.empty}" class="w3-display-middle">
-                    <p>There's no candies for the moments</p>
-                </div>
 
-                <div th:if="${!candies.empty}" >
-
-                        <div th:each="candy : ${candies}" class="w3-third  w3-border w3-border-black w3-row-padding ">
-                            <p th:text="${candy.getName()}" class="">Name :</p>
-                            <p th:text="${candy.getPrice()}" class="">Price :</p>
-                            <p th:text="${candy.getShortDescription()}" class="">description :</p>
-                            <form method="post" th:action="@{/candies/delete/{id}(id=${candy.id})}">
-                                <button type="submit" class="w3-button w3-circle  w3-ripple w3-red" >
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </form>
-
-                        </div>
-                </div>
-            </div>
-        </section>
 
     </div>
+
+    <section class="w3-container w3-content w3-center w3-padding-64 w3-twothird">
+        <h3>Candies</h3>
+        <div class="w3-row w3-padding-32">
+            <div th:if="${candies.empty}" class="w3-display-middle">
+                <p>There's no candies for the moments</p>
+            </div>
+
+            <div th:if="${!candies.empty}" >
+
+                <div th:each="candy : ${candies}" class="w3-third  w3-border w3-border-black w3-row-padding ">
+                    <p th:text="${candy.getName()}" class="">Name :</p>
+                    <p th:text="${candy.getPrice()}" class="">Price :</p>
+                    <p th:text="${candy.getShortDescription()}" class="">description :</p>
+                    <form method="post" th:action="@{/candies/delete/{id}(id=${candy.id})}">
+                        <button type="submit" class="w3-button w3-circle  w3-ripple w3-red" >
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--Create candy -->
     <div class="w3-card-4 w3-display-bottomright">
