@@ -1,0 +1,7 @@
+CREATE TABLE baskets (
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    userId INTEGER NOT NULL,
+    productId INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    PRIMARY KEY(id)
+);

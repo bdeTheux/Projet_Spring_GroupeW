@@ -21,21 +21,23 @@ public class BackendBasketService {
         return repo.findAll();
     }
 
-    public Iterable<BackendBasket> findAllById_user(int id_user){
-       return repo.findAllById_user(id_user);
+    public Iterable<BackendBasket> findAllByUserId(int userId){
+       return repo.findAllByUserId(userId);
     }
 
-    public void saveBasket(BackendBasket basket){
-        repo.save(basket);
+    public BackendBasket saveBasket(BackendBasket basket){
+        return repo.save(basket);
     }
+
     public BackendBasket findById(int id){
         return repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id));
     }
 
-    public void updateQuantity(int id  , int nquantity) {
-        BackendBasket basket = repo.findById(id).orElseThrow(InternalError::new);
-        basket.setQuantity(nquantity);
+    public void updateQuantity(int id  ,BackendBasket nBasket) {
+        BackendBasket basket = repo.findById(id).orElseThrow(InternalError::new );
+        basket.setQuantity(nBasket.getQuantity());
+        repo.save(basket);
     }
 
     public void deleteProduct(int id){
@@ -43,8 +45,5 @@ public class BackendBasketService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id) );
         repo.delete(basket);
 
-    }
-    public void payBasket(){
-        repo.payBasket();
     }
 }

@@ -2,9 +2,13 @@ package Backend.Backendbasket.controller;
 
 import Backend.Backendbasket.model.BackendBasket;
 import Backend.Backendbasket.service.BackendBasketService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+
 
 @RestController
 @RequestMapping("/Basket")
@@ -17,28 +21,40 @@ public class BackendBasketController {
     }
 
     @GetMapping()
-    public Iterable<BackendBasket> findAllById_user(@RequestParam() int id_user) {
-        return service.findAllById_user(id_user);
+    public Iterable<BackendBasket> findAllByUserId(@RequestParam() int userId) {
+        return service.findAllByUserId(userId);
     }
+
     @GetMapping("/{id}")
     public BackendBasket findById(@PathVariable("id") int id) {
         return service.findById(id);
     }
 
     @PostMapping()
-    public void addBasket (BackendBasket basket){ service.saveBasket(basket);}
+    public ResponseEntity<Void> addBasket (@RequestBody  BackendBasket basket){
+        BackendBasket bas = service.saveBasket(basket);
+        if(bas == null) return ResponseEntity.noContent().build();
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(bas.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
 
     @PutMapping("/{id}")
-    public void putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity) {
-        service.updateQuantity(id, nQuantity);
+    public String putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity ) {
+        BackendBasket nBasket = new BackendBasket();
+        nBasket.setQuantity(nQuantity);
+        service.updateQuantity( id,nBasket);
+        System.out.println("update get " + service.findById(id));
+        return "update";
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteBasket (@PathVariable("id") int id){
+    @DeleteMapping("/delete/{id}")
+    public String deleteBasket (@PathVariable("id") int id){
+        System.out.println("delete " + service.findById(id));
         service.deleteProduct(id);
+        return "delete";
     }
-    @GetMapping()
-    void payBasket(){
-        service.payBasket();
-    };
 }

@@ -11,11 +11,8 @@ import java.util.List;
 @Repository
 public interface BackendBasketRepo extends CrudRepository<BackendBasket,Integer> {
 
-     Iterable<BackendBasket> findAll();
 
-     Iterable<BackendBasket> findAllById_user(int id_user);
+     Iterable<BackendBasket> findAllByUserId(int userId);
 
-
-     void payBasket();
 
 }

@@ -1,4 +1,4 @@
-package Frontend.FrontendBasket.proxy;
+package Frontend.FrontendBasket.proxies;
 
 import Frontend.FrontendBasket.model.FrontendBasket;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Iterator;
 
 @Component
-@FeignClient(name = "BackendBasket-API",url = "localhost:9000")
+@FeignClient(name = "BackendBasket-API",url = "localhost:8000")
 public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
