@@ -22,41 +22,16 @@ import java.util.stream.Collectors;
 @Controller
 public class CandyListController {
     private CandyProxy proxy;
-    private String currentOrder;
-    private String currentCategory = null;
     public CandyListController(CandyProxy proxy){
         this.proxy = proxy;
     }
 
     @GetMapping("/candies")
     public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)String order, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
-        List<Candy> candiesList = proxy.findAll(category, order, min, max);
-        List<String> orderList = new ArrayList<String>(Arrays.asList("none", "asc", "desc"));
-        System.out.println(currentOrder + "current");
-        // JE dois verifier si il y a un currentOrder, une current category ( faire si la liste renvoyé)
-        System.out.println("order :" + order);
-        System.out.println("category" + category);
-        /*if(currentOrder != null && order == null){
-            order = currentOrder;
-        }
-        //Order
-        if(order != null){
-            List<Candy> candiesTmp = candiesList;
-            if(order.equals("asc")){
-                candiesTmp = candiesList.stream().sorted(Comparator.comparing(Candy::getPrice)).collect(Collectors.toList());
-            }else {
-                candiesTmp = candiesList.stream().sorted(Comparator.comparing(Candy::getPrice).reversed()).collect(Collectors.toList());
-            }
-            candiesList = candiesTmp;
-            currentOrder = order;
-        }
-        System.out.println(order);
 
-        //Search by Category
-        if(category != null){
-            candiesList = findByCategory(category);
-        }
-        */
+        List<Candy> candiesList = proxy.findAll(findCategory(category), order, min, max);
+        List<String> orderList = new ArrayList<String>(Arrays.asList("none", "asc", "desc"));
+        System.out.println("order :" + order);
 
         model.addAttribute("orders", orderList);
         model.addAttribute("candies", candiesList);
@@ -66,10 +41,10 @@ public class CandyListController {
         return "candies";
     }
 
-    public List<Candy> findByCategory(String category){
+    public Category findCategory(String category){
         for(Category cat: Category.values()){
             if(cat.getName().equals(category)){
-                return proxy.findAllByCategory(cat);
+                return cat;
             }
         }
         return null;

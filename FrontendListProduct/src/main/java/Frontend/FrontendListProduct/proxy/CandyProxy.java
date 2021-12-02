@@ -13,7 +13,7 @@ import java.util.List;
 public interface CandyProxy {
 
     @GetMapping("/candies")
-    List<Candy> findAll(@RequestParam(required=false)String category, @RequestParam(required = false)String order, @RequestParam(required=false)Integer min, @RequestParam(required=false)Integer max);
+    List<Candy> findAll(@RequestParam(required=false)Category category, @RequestParam(required = false)String order, @RequestParam(required=false)Integer min, @RequestParam(required=false)Integer max);
     @GetMapping("/candies")
     List<Candy>findAllByCategory(@RequestParam(required = false) Category category);
 

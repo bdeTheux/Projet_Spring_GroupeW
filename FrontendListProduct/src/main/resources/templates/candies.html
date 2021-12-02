@@ -25,39 +25,25 @@
     <!--list of all the candies-->
     <div>
         <!--Filters options -->
-        <div class="w3-dropdown-hover w3-margin-left w3-margin-top ">
-            <button class="w3-button w3-button w3-theme-dark-grey w3-monospace ">Categories</button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a th:each="category : ${categories}" th:href="@{/candies(category=${category})}"  class="w3-bar-item w3-button" th:text="${category.toString()}">category.getName</a>
-            </div>
 
-        </div>
-        <div >
-            <form method="get" th:action="@{/candies(order=${order})}">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item">
-                        <input type="radio" th:each="order : ${orders}"th:text="${order}" th:id="${order}" name="order" th:value="${order}">
-                        <label th:for="${order}" th:text="${order}" th:value="${order}"></label>
-                    </li>
-                    <button type="submit" class="w3-button " ></button>
-                    <!--
-                    <li class="list-group-item">
-                        <input type="radio" id="none" name="sortChoice" value="NONE">
-                        <label for="none">None</label>
-                    </li>
-                    <li class="list-group-item">
-                        <input type="radio" id="asc" name="sortChoice" value="ASC">
-                        <label for="asc">Asc</label>
-                    </li>
-                    <li class="list-group-item">
-                        <input type="radio" id="desc" name="sortChoice" value="DESC">
-                        <label for="desc">Desc</label>
-                    </li> -->
-                </ul>
-            </form>
+        <form method="get" th:action="@{/candies(category=${category}, order=${order})}">
+            <select class="w3-select" th:name="category">
+                <option value="" disabled selected>Category</option>
+                <option th:each="category : ${categories}" th:text="${category}" th:value="${category}" >Option 1</option>
+            </select>
+
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">
+                    <input type="radio" th:each="order : ${orders}"th:text="${order}" th:id="${order}" name="order" th:value="${order}">
+                    <label th:for="${order}" th:text="${order}" th:value="${order}"></label>
+                </li>
+
+            </ul>
 
 
-        </div>
+            <button type="submit" class="w3-button " ></button>
+        </form>
+        
         <!--Filters prices -->
         <div class="w3-row-padding">
             <div class="w3-twothird	">
