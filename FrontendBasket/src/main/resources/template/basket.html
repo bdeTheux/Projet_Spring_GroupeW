@@ -32,7 +32,7 @@
 
         <div th:if="${!baskets.empty}" class="w3-display-middle">
             <ul th:each="basket : ${baskets}" class="list-group list-group-flush">
-                <li th:text="${basket.getId_product()}" class="list-group-item">Product :</li>
+                <li th:text="${basket.getProductId()}" class="list-group-item">Product :</li>
                 <li th:text="${basket.getQuantity()}" class="list-group-item">Quantity :</li>
                 <li th:text="${candy.getPrice()}" class="list-group-item">Price of product :</li>
                 <li th:text="${basket.getQuantity()*candy.getPrice()}" class="list-group-item">Total Price :</li>
@@ -41,8 +41,6 @@
     </section>
 
 </div>
-<!--<i class="fa fa-plus-square"></i>-->
-
 
 <!-- Footer -->
 <footer class="w3-display-bottommiddle w3-opacity">
