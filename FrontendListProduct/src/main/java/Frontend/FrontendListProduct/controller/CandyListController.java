@@ -85,6 +85,40 @@ public class CandyListController {
         return new ModelAndView("redirect:/candies");
     }
 
+    @PostMapping("/candies/update/{id}")
+    public ModelAndView updateCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category, @PathVariable("id") int id){
+        Candy cdy = candy;
+        System.out.println(cdy.toString());
+        if(category.equals(Category.ELEMANTARY.getName())){
+            cdy.setCategory(Category.ELEMANTARY);
+        }else if(category.equals(Category.MENTAL.getName())){
+            cdy.setCategory(Category.MENTAL);
+        }else if(category.equals(Category.MUTATION.getName())){
+            cdy.setCategory(Category.MUTATION);
+        }else{
+            cdy.setCategory(Category.PHYSICS);
+        }
+        proxy.updateCandy(id, cdy);
+        return new ModelAndView("redirect:/candies");
+    }
+
+    @GetMapping("/candies/update/{id}")
+    public String updateCandy(@PathVariable("id")int id, Model model){
+        Candy candy = proxy.findById(id);
+        CandyDTO candyDTO = new CandyDTO();
+
+        candyDTO.setId(candy.getId());
+        candyDTO.setName(candy.getName());
+        candyDTO.setShortDescription(candy.getShortDescription());
+        candyDTO.setDetailDescription(candy.getDetailDescription());
+        candyDTO.setPrice(candy.getPrice());
+        candyDTO.setCategory(candy.getCategory());
+        model.addAttribute("candy", candyDTO);
+        model.addAttribute("categories", getCategories());
+        return "updateCandy";
+    }
+
+
     @PostMapping("/candies/delete/{id}")
     public ModelAndView deleteCandy(@PathVariable("id") int id){
         System.out.println("je suis ici");
