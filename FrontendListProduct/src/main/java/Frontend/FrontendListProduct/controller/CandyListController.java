@@ -4,6 +4,7 @@ package Frontend.FrontendListProduct.controller;
 import Frontend.FrontendListProduct.model.Candy;
 import Frontend.FrontendListProduct.model.CandyDTO;
 import Frontend.FrontendListProduct.model.Category;
+import Frontend.FrontendListProduct.model.PriceRange;
 import Frontend.FrontendListProduct.proxy.CandyProxy;
 import com.ctc.wstx.shaded.msv_core.driver.textui.Debug;
 import org.springframework.stereotype.Controller;
@@ -27,12 +28,15 @@ public class CandyListController {
     }
 
     @GetMapping("/candies")
-    public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)String order, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
-
+    public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)String order, @RequestParam(required = false)Double min, @RequestParam(required = false)Double max,Model model){
+        //J'ai mis cette condition car je ne trouve pas comment enlever le 0.0 de base dans le input
+        if(min != null && max != null && min == 0.0 && max == 0.0) max = null;
         List<Candy> candiesList = proxy.findAll(findCategory(category), order, min, max);
         List<String> orderList = new ArrayList<String>(Arrays.asList("none", "asc", "desc"));
         System.out.println("order :" + order);
-
+        System.out.println("min: " + min);
+        System.out.println("max: " + max);
+        model.addAttribute("priceRange", new PriceRange());
         model.addAttribute("orders", orderList);
         model.addAttribute("candies", candiesList);
        // model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));

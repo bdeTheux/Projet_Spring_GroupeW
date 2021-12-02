@@ -67,14 +67,8 @@ public class CandyController {
         List<Candy> candies = (List<Candy>) service.findAll();
         List<Candy>tmpCandies = candies;
         if(category != null){
-            //for(Category cat: Category.values()){
-              //  if(cat.name().equals(category)){
-                    tmpCandies = candies.stream().filter(candy -> candy.getCategory().equals(category)).collect(Collectors.toList());
-                //    for (Candy c:tmpCandies){
-                  //      System.out.println(c);
-                 //   }
-               // }
-            //}
+
+            tmpCandies = candies.stream().filter(candy -> candy.getCategory().equals(category)).collect(Collectors.toList());
 
             candies = tmpCandies;
         }
