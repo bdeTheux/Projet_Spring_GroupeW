@@ -1,6 +1,6 @@
 package Frontend.FrontendBasket.proxies;
 
-import Frontend.FrontendBasket.model.FrontendBasket;
+import Frontend.FrontendBasket.model.Basket;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -13,16 +13,16 @@ public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
     @GetMapping("/Basket")
-    Iterator<FrontendBasket> findAllById_user(@RequestParam() int id_user );
+    Iterator<Basket> findAllById_user(@RequestParam() int id_user );
 
     @GetMapping("/Basket")
     Object findProductDetails(@RequestParam() int id_product);
 
     @GetMapping("/Basket/{id}")
-    FrontendBasket findById(@PathVariable("id") int id);
+    Basket findById(@PathVariable("id") int id);
 
     @PostMapping("/Basket")
-    void addBasket (FrontendBasket basket);
+    void addBasket (Basket basket);
 
     @DeleteMapping("/Basket/{id}")
     void deleteProduct(@PathVariable("id") int id);
