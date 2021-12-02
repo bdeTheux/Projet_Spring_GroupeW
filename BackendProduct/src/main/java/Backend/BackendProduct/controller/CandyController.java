@@ -11,7 +11,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/candies")
@@ -58,15 +60,43 @@ public class CandyController {
 
     @GetMapping
     public List<Candy> getCandies(@RequestParam(required=false)String category,
+                                  @RequestParam(required = false)String order,
                                   @RequestParam(required=false)Double min,
                                   @RequestParam(required=false)Double max){
+
+        List<Candy> candies = (List<Candy>) service.findAll();
+
         if(category != null){
+            List<Candy>tmpCandies = candies.stream().filter(candy -> candy.getCategory().equals(category)).collect(Collectors.toList());
+            candies = tmpCandies;
+        }
+        if(min != null && max != null){
+            List<Candy>tmpCandies = candies.stream().filter(candy -> candy.getPrice() >= min && candy.getPrice() <= max).collect(Collectors.toList());
+            candies = tmpCandies;
+        }
+        if(order != null){
+            List<Candy> tmpCandies = candies;
+            if(order.equals("asc")){
+                tmpCandies = candies.stream().sorted(Comparator.comparing(Candy::getPrice)).collect(Collectors.toList());
+            }else if(order.equals("desc")){
+                tmpCandies = candies.stream().sorted(Comparator.comparing(Candy::getPrice).reversed()).collect(Collectors.toList());
+            }
+            candies = tmpCandies;
+        }
+
+        return candies;
+
+
+
+
+        /*if(category != null){
             return (List<Candy>) service.findByCategory(Category.valueOf(category));
         }else if(min != null && max != null){
             return (List<Candy>) service.findByPrice(min, max);
         }else{
             return (List<Candy>) service.findAll();
-        }
+        }*/
+
     }
 
 

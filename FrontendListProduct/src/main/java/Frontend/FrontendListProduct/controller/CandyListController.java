@@ -12,23 +12,55 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 //@RequestMapping("/candies")
 @Controller
 public class CandyListController {
     private CandyProxy proxy;
-
+    private String currentOrder;
+    private String currentCategory = null;
     public CandyListController(CandyProxy proxy){
         this.proxy = proxy;
     }
 
     @GetMapping("/candies")
-    public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
-        System.out.println("je passe");
-        model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));
-        //model.addAttribute("candies", listCandies());
+    public String candies(@RequestParam(required = false)String category, @RequestParam(required = false)String order, @RequestParam(required = false)Integer min, @RequestParam(required = false)Integer max,Model model){
+        List<Candy> candiesList = proxy.findAll(category, order, min, max);
+        List<String> orderList = new ArrayList<String>(Arrays.asList("none", "asc", "desc"));
+        System.out.println(currentOrder + "current");
+        // JE dois verifier si il y a un currentOrder, une current category ( faire si la liste renvoyé)
+        System.out.println("order :" + order);
+        System.out.println("category" + category);
+        /*if(currentOrder != null && order == null){
+            order = currentOrder;
+        }
+        //Order
+        if(order != null){
+            List<Candy> candiesTmp = candiesList;
+            if(order.equals("asc")){
+                candiesTmp = candiesList.stream().sorted(Comparator.comparing(Candy::getPrice)).collect(Collectors.toList());
+            }else {
+                candiesTmp = candiesList.stream().sorted(Comparator.comparing(Candy::getPrice).reversed()).collect(Collectors.toList());
+            }
+            candiesList = candiesTmp;
+            currentOrder = order;
+        }
+        System.out.println(order);
+
+        //Search by Category
+        if(category != null){
+            candiesList = findByCategory(category);
+        }
+        */
+
+        model.addAttribute("orders", orderList);
+        model.addAttribute("candies", candiesList);
+       // model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));
         model.addAttribute("categories", getCategories());
         model.addAttribute("candy", new CandyDTO());
         return "candies";
@@ -52,7 +84,7 @@ public class CandyListController {
     }
 
     public List<Candy> listCandies(){
-        return proxy.findAll(null, null, null);
+        return proxy.findAll(null, null, null, null);
     }
 
     @PostMapping("/candies")
