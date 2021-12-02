@@ -3,11 +3,12 @@ package Backend.Backendbasket.controller;
 import Backend.Backendbasket.model.BackendBasket;
 import Backend.Backendbasket.service.BackendBasketService;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/Basket")
@@ -20,7 +21,7 @@ public class BackendBasketController {
     }
 
     @GetMapping()
-    public Iterable<BackendBasket> findAllByUserId(@RequestParam(required = false) int userId) {
+    public Iterable<BackendBasket> findAllByUserId(@RequestParam() int userId) {
         return service.findAllByUserId(userId);
     }
 
@@ -42,18 +43,18 @@ public class BackendBasketController {
     }
 
     @PutMapping("/{id}")
-    public void putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity) {
-
-        service.updateQuantity(id, nQuantity);
+    public String putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity ) {
+        BackendBasket nBasket = new BackendBasket();
+        nBasket.setQuantity(nQuantity);
+        service.updateQuantity( id,nBasket);
+        System.out.println("update get " + service.findById(id));
+        return "update";
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteBasket (@PathVariable("id") int id){
+    public String deleteBasket (@PathVariable("id") int id){
+        System.out.println("delete " + service.findById(id));
         service.deleteProduct(id);
-    }
-
-    @GetMapping("/paid")
-    void payBasket(@RequestParam()  int userId){
-        service.payBasket( userId);
+        return "delete";
     }
 }

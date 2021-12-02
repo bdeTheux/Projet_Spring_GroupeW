@@ -34,23 +34,16 @@ public class BackendBasketService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id));
     }
 
-    public void updateQuantity(int id  , int nQuantity) {
-        BackendBasket basket = repo.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id) );
-        basket.setQuantity(nQuantity);
+    public void updateQuantity(int id  ,BackendBasket nBasket) {
+        BackendBasket basket = repo.findById(id).orElseThrow(InternalError::new );
+        basket.setQuantity(nBasket.getQuantity());
+        repo.save(basket);
     }
 
     public void deleteProduct(int id){
         BackendBasket basket = repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id) );
         repo.delete(basket);
-
-    }
-    public void payBasket(int userId ){
-        Iterable<BackendBasket> basketsPaid =repo.findAllByUserId(userId);
-        for (BackendBasket bas: basketsPaid) {
-            repo.delete(bas);
-        }
 
     }
 }
