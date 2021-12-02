@@ -8,11 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
-@Entity(name="basket")
+@Entity(name="baskets")
 
 public class BackendBasket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id , id_user,id_product, quantity;
+    private int id ;
+    private int userId;
+    private int productId;
+    private int quantity;
 
 }
