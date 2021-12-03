@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Iterator;
 
 @Component
-@FeignClient(name = "candiesB",url = "http://localhost:9000/")
+@FeignClient(name = "candiesB",url = "http://localhost:8000/")
 public interface ProductProxy {
-    @GetMapping("/{id}")
+    @GetMapping("candies/{id}")
     Candy findById(@PathVariable("id") int id);
 }

@@ -72,8 +72,8 @@ public class CandyListController {
         String t = category;
         Candy cand = candy;
 
-        if(category.equals(Category.ELEMANTARY.getName())){
-            cand.setCategory(Category.ELEMANTARY);
+        if(category.equals(Category.ELEMENTARY.getName())){
+            cand.setCategory(Category.ELEMENTARY);
         }else if(category.equals(Category.MENTAL.getName())){
             cand.setCategory(Category.MENTAL);
         }else if(category.equals(Category.MUTATION.getName())){
@@ -90,8 +90,8 @@ public class CandyListController {
     public ModelAndView updateCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category, @PathVariable("id") int id){
         Candy cdy = candy;
         System.out.println(cdy.toString());
-        if(category.equals(Category.ELEMANTARY.getName())){
-            cdy.setCategory(Category.ELEMANTARY);
+        if(category.equals(Category.ELEMENTARY.getName())){
+            cdy.setCategory(Category.ELEMENTARY);
         }else if(category.equals(Category.MENTAL.getName())){
             cdy.setCategory(Category.MENTAL);
         }else if(category.equals(Category.MUTATION.getName())){

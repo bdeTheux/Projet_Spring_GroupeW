@@ -56,11 +56,12 @@ public class FrontendBasketController {
     }
     @GetMapping("/paid")
     public ModelAndView payBasket(@RequestParam() int userId){
+        System.out.println("PAR LAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         basketProxy.payBasket(userId);
         return new ModelAndView("redirect:/paid");
     }
     @GetMapping("/{userId}")
-    public Object detailsUser(@PathVariable("userId") int userId,Model model ){
+    public String detailsUser(@PathVariable("userId") int userId,Model model ){
         User candy =userProxy.getUser(userId);
         model.addAttribute("user", candy);
         return "paid";

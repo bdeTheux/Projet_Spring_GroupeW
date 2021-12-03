@@ -10,6 +10,6 @@ import java.util.Iterator;
 @Component
 @FeignClient(name = "usersB",url = "http://localhost:8001/")
 public interface UserProxy {
-    @GetMapping("/{id}")
+    @GetMapping("users/{id}")
     User getUser(@PathVariable("id") int id);
 }

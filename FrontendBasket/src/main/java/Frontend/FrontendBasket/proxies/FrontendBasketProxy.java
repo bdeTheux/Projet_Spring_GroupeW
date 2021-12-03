@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Iterator;
 
 @Component
-@FeignClient(name = "BackendBasket-API",url="http://localhost:8000/")
+@FeignClient(name = "BackendBasket-API",url="http://localhost:8002/")
 public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
