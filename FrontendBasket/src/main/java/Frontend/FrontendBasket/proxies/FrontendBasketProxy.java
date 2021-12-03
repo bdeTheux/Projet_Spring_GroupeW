@@ -8,30 +8,30 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Iterator;
 
 @Component
-@FeignClient(name = "BackendBasket-API",url = "localhost:8000")
+@FeignClient(name = "BackendBasket-API",url="http://localhost:8000/")
 public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
-    @GetMapping("/Basket")
-    Iterator<Basket> findAllById_user(@RequestParam() int id_user );
+    @GetMapping("/basket")
+    Iterable<Basket> findAllByUserId(@RequestParam() int userId );
 
-    @GetMapping("/Basket")
-    Object findProductDetails(@RequestParam() int id_product);
+    @GetMapping("/basket")
+    Object findProductDetails(@RequestParam() int productId);
 
-    @GetMapping("/Basket/{id}")
+    @GetMapping("/basket/{id}")
     Basket findById(@PathVariable("id") int id);
 
-    @PostMapping("/Basket")
-    void addBasket (Basket basket);
+    @PostMapping("/basket")
+    void createBasket (Basket basket);
 
-    @DeleteMapping("/Basket/{id}")
-    void deleteProduct(@PathVariable("id") int id);
+    @DeleteMapping("/basket/{id}")
+    String deleteProduct(@PathVariable("id") int id);
 
-    @PutMapping("/Basket/{id}")
+    @PutMapping("/basket/{id}")
     void updateQuantity(@PathVariable("id") int id  , @RequestParam() int nquantity);
 
-    @GetMapping("/Basket")
-    void payBasket();
+    @GetMapping("/basket/paid")
+    void payBasket(int userId);
 
 
 

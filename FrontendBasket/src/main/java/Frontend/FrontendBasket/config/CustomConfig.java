@@ -3,8 +3,9 @@ package Frontend.FrontendBasket.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
-@ConfigurationProperties("Frontend.FrontendBasket")
+@ConfigurationProperties("frontend.basket")
 public class CustomConfig {
     private String api;
 

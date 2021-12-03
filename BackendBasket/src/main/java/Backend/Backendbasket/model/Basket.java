@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Data
 @Entity(name="baskets")
 
-public class BackendBasket {
+public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
