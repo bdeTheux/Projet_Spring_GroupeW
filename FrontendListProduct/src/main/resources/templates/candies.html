@@ -65,18 +65,19 @@
             </div>
 
             <div th:if="${!candies.empty}" >
-
                 <div th:each="candy : ${candies}" class="w3-third  w3-border w3-border-black w3-row-padding ">
-                    <p th:text="${candy.getName()}" class="">Name :</p>
-                    <p th:text="${candy.getPrice()}" class="">Price :</p>
-                    <p th:text="${candy.getShortDescription()}" class="">description :</p>
-                    <form method="post" th:action="@{/candies/delete/{id}(id=${candy.id})}">
-                        <button type="submit" class="w3-button w3-circle  w3-ripple w3-red" >
-                            <i class="fa fa-minus"></i>
-                        </button>
-                    </form>
-                    <a th:href="@{/candies/update/{id}(id=${candy.id})}" class="w3-button w3-circle  w3-ripple w3-green" >
-                        <i class="fa fa-edit"></i>
+                    <a th:href="@{/candy/{id}(id=${candy.id})}">
+                        <p th:text="${candy.getName()}" class="">Name :</p>
+                        <p th:text="${candy.getPrice()}" class="">Price :</p>
+                        <p th:text="${candy.getShortDescription()}" class="">description :</p>
+                        <form method="post" th:action="@{/candies/delete/{id}(id=${candy.id})}">
+                            <button type="submit" class="w3-button w3-circle  w3-ripple w3-red" >
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </form>
+                        <a th:href="@{/candies/update/{id}(id=${candy.id})}" class="w3-button w3-circle  w3-ripple w3-green" >
+                            <i class="fa fa-edit"></i>
+                        </a>
                     </a>
                 </div>
             </div>

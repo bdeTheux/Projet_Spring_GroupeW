@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -124,6 +125,11 @@ public class CandyListController {
         System.out.println("je suis ici");
         proxy.deleteCandy(id);
         return new ModelAndView("redirect:/candies");
+    }
+    @GetMapping("/candy/{id}")
+    public ModelAndView getCandy(@PathVariable("id") int id){
+        String url = "http://localhost:7001/candy/" + id;
+        return new ModelAndView(new RedirectView(url));
     }
 
 
