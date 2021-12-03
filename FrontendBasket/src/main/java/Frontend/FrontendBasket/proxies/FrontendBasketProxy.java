@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Iterator;
 
 @Component
-@FeignClient(name = "BackendBasket-API",url = "localhost:8000")
+@FeignClient(name = "BackendBasket-API",url="http://localhost:8000/")
 public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
     @GetMapping("/Basket")
-    Iterator<Basket> findAllById_user(@RequestParam() int id_user );
+    Iterator<Basket> findAllByUserId(@RequestParam() int userId );
 
     @GetMapping("/Basket")
-    Object findProductDetails(@RequestParam() int id_product);
+    Object findProductDetails(@RequestParam() int productId);
 
     @GetMapping("/Basket/{id}")
     Basket findById(@PathVariable("id") int id);
 
     @PostMapping("/Basket")
-    void addBasket (Basket basket);
+    void createBasket (Basket basket);
 
     @DeleteMapping("/Basket/{id}")
     void deleteProduct(@PathVariable("id") int id);
@@ -30,7 +30,7 @@ public interface FrontendBasketProxy {
     @PutMapping("/Basket/{id}")
     void updateQuantity(@PathVariable("id") int id  , @RequestParam() int nquantity);
 
-    @GetMapping("/Basket")
+    @GetMapping("/Basket/paid")
     void payBasket();
 
 

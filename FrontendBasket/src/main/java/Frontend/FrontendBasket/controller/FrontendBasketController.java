@@ -3,39 +3,42 @@ package Frontend.FrontendBasket.controller;
 import Frontend.FrontendBasket.model.Basket;
 import Frontend.FrontendBasket.proxies.FrontendBasketProxy;
 import Frontend.FrontendBasket.proxies.ProductProxy;
-import Frontend.FrontendBasket.proxies.UserProxy;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+import Frontend.FrontendBasket.model.Candy;
+@Controller
+@RequestMapping("/basket")
 public class FrontendBasketController {
     private FrontendBasketProxy basketProxy;
     private ProductProxy productProxy;
-    private UserProxy userProxy;
+ //   private UserProxy userProxy;
 
-    public FrontendBasketController(FrontendBasketProxy basketProxy,ProductProxy productProxy,UserProxy userProxy) {
+    public FrontendBasketController(FrontendBasketProxy basketProxy,ProductProxy productProxy){//UserProxy userProxy) {
         this.basketProxy = basketProxy;
         this.productProxy=productProxy;
-        this.userProxy=userProxy;
+       // this.userProxy=userProxy;
     }
 
-    @GetMapping("/Basket")
+    @GetMapping("")
     public String displayList(@RequestParam()int id_user,Model model){
-        model.addAttribute("baskets", basketProxy.findAllById_user(id_user));
-        return "baskets";
+        Iterable<Basket> baskets = (Iterable<Basket>) basketProxy.findAllByUserId(id_user);
+        model.addAttribute("baskets", baskets);
+        return "basket";
     }
 
-    @PostMapping
+    @PostMapping("")
     public ModelAndView createBasket(@ModelAttribute Basket basket) {
-        basketProxy.addBasket(basket);
+        basketProxy.createBasket(basket);
         return new ModelAndView("redirect:/");
     }
+    //add delete methode
     @GetMapping
-    public Object detailProduct(@RequestParam() int id_product,Model model ){
-        model.addAttribute("candy", productProxy.findById(id_product));
-        return "candy";
+    public Object detailProduct(@RequestParam() int productId,Model model ){
+        Candy candy =productProxy.findById(productId);
+        model.addAttribute("candy", candy);
+        return "basket";
     }
+    //add paid method
 }

@@ -11,7 +11,7 @@ import java.net.URI;
 
 
 @RestController
-@RequestMapping("/Basket")
+@RequestMapping("/basket")
 public class BackendBasketController {
 
     private BasketService service;
