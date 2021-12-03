@@ -51,11 +51,8 @@ public class CandyController {
     }
     //Update one
     @PutMapping("/{id}")
-    public String updateCandy(@PathVariable("id") int id, Model model) {
-        model.addAttribute("candy", service.findById(id));
-        service.updateCandy((Candy)model, id);
-        System.out.println("update get " + service.findById(id));
-        return "update";
+    public void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy) {
+        service.updateCandy(candy, id);
     }
 
     @GetMapping
