@@ -13,7 +13,7 @@ public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
     @GetMapping("/basket")
-    Iterator<Basket> findAllByUserId(@RequestParam() int userId );
+    Iterable<Basket> findAllByUserId(@RequestParam() int userId );
 
     @GetMapping("/basket")
     Object findProductDetails(@RequestParam() int productId);

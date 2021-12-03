@@ -31,22 +31,21 @@
 <!--your basket-->
 <div>
     <section class="mainContainer center">
-        <div th:if=${baskets.empty} class="w3-display-middle">
+        <div th:if=${basketDTOs.empty} class="w3-display-middle">
             <p>There's no candies in your basket</p>
             <a href="candies">Shop now !</a><!--lien vers la liste des candy-->
         </div>
 
-        <div th:if="${!baskets.empty}" class="container">
-            <ul th:each="basket : ${baskets}" class="row ">
-                <li th:text="${candy.name}" class="col align">Product :</li><!--name of product-->
-                <li th:text="${candy.price}" class="col align">Price of product :</li>
+        <div th:if="${!basketDTOs.empty}" class="container">
+            <ul th:each="basket : ${basketDTOs}" class="row ">
+                <li th:text="${basket.CandyName}" class="col align">Product :</li><!--name of product-->
+                <li th:text="${basket.CandyPrice}" class="col align">Price of product :</li>
                 <li th:text="${basket.quantity}" class="col align">Quantity :</li>
-                <li class="col"><a th:href="@{/basket/delete/{id}(id=${candy.id})}"><img class=" deleteIcon " src="img/delete_icon.jpg" title="deleteProduct"></a></a></li>
-
+                <li class="col"><img th:href="@{/basket/delete/{id}(id=${basket.id})}"><img class=" deleteIcon " src="img/delete_icon.jpg" title="deleteProduct"></img></a></li>
             </ul>
             <ul>
-            <li th:text="${basket.quantity*candy.price}" class="basket">Total Price:</li>
-            <li class="basket"><a th:href="@{/basket/paid?userId=${basket.userId}}"><button>PAID</button></a></li>
+            <li th:text="${totalPrice}" class="basket">Total Price:</li>
+            <li class="basket"><a th:href="@{/basket/paid?userId=${basketDTOs.get(0).userId}}"><button>PAID</button></a></li>
             </ul>
         </div>
     </section>

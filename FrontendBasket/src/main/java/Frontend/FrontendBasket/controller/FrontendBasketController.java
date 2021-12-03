@@ -1,6 +1,7 @@
 package Frontend.FrontendBasket.controller;
 
 import Frontend.FrontendBasket.model.Basket;
+import Frontend.FrontendBasket.model.BasketDTO;
 import Frontend.FrontendBasket.model.User;
 import Frontend.FrontendBasket.proxies.FrontendBasketProxy;
 import Frontend.FrontendBasket.proxies.ProductProxy;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import Frontend.FrontendBasket.model.Candy;
 
 import java.util.ArrayList;
+
 
 @Controller
 @RequestMapping("/basket")
@@ -28,8 +30,17 @@ public class FrontendBasketController {
 
     @GetMapping("")
     public String displayList(@RequestParam()int userId,Model model){
-        ArrayList<Basket> baskets = (ArrayList<Basket>) basketProxy.findAllByUserId(userId);
-        model.addAttribute("baskets", baskets);
+        Iterable<Basket> baskets =  basketProxy.findAllByUserId(userId);
+        ArrayList<BasketDTO> basketDTOs = new ArrayList<BasketDTO>();
+        double totalPrice = 0;
+
+        for (Basket bas :baskets) {
+            Candy candy = productProxy.findById(bas.getProductId());
+            basketDTOs.add(new BasketDTO(bas.getId(),bas.getQuantity(),bas.getUserId(),bas.getProductId(),candy.getName(),candy.getPrice()));
+            totalPrice+=(bas.getQuantity()*candy.getPrice());
+        }
+        model.addAttribute("totalPrice",totalPrice);
+        model.addAttribute("basketDTOs",basketDTOs);
         return "basket";
     }
 
@@ -39,22 +50,17 @@ public class FrontendBasketController {
         return new ModelAndView("redirect:/");
     }
     @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable("id") int id){
-        return basketProxy.deleteProduct(id);
+    public ModelAndView deleteProduct(@PathVariable("id") int id){
+         basketProxy.deleteProduct(id);
+        return new ModelAndView("redirect:/");
     }
-    @GetMapping
-    public Object detailsProduct(@RequestParam() int productId, Model model ){
-        Candy candy =productProxy.findById(productId);
-        model.addAttribute("candy", candy);
-        return "basket";
-    }
-    @GetMapping("paid")
+    @GetMapping("/paid")
     public ModelAndView payBasket(@RequestParam() int userId){
         basketProxy.payBasket(userId);
         return new ModelAndView("redirect:/paid");
     }
-    @GetMapping
-    public Object detailsUser(@RequestParam() int userId,Model model ){
+    @GetMapping("/{userId}")
+    public Object detailsUser(@PathVariable("userId") int userId,Model model ){
         User candy =userProxy.getUser(userId);
         model.addAttribute("user", candy);
         return "paid";

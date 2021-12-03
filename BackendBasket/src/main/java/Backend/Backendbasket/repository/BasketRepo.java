@@ -12,7 +12,7 @@ public interface BasketRepo extends CrudRepository<Basket,Integer> {
      Iterable<Basket> findAllByUserId(int userId);
 
 
-     void payBasket(int userId);
+
 
 
 }
