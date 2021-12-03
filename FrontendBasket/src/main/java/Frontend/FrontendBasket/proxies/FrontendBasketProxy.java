@@ -12,26 +12,26 @@ import java.util.Iterator;
 public interface FrontendBasketProxy {
     //TODO
     //RequestHeader => cookies ..
-    @GetMapping("/Basket")
+    @GetMapping("/basket")
     Iterator<Basket> findAllByUserId(@RequestParam() int userId );
 
-    @GetMapping("/Basket")
+    @GetMapping("/basket")
     Object findProductDetails(@RequestParam() int productId);
 
-    @GetMapping("/Basket/{id}")
+    @GetMapping("/basket/{id}")
     Basket findById(@PathVariable("id") int id);
 
-    @PostMapping("/Basket")
+    @PostMapping("/basket")
     void createBasket (Basket basket);
 
-    @DeleteMapping("/Basket/{id}")
-    void deleteProduct(@PathVariable("id") int id);
+    @DeleteMapping("/basket/{id}")
+    String deleteProduct(@PathVariable("id") int id);
 
-    @PutMapping("/Basket/{id}")
+    @PutMapping("/basket/{id}")
     void updateQuantity(@PathVariable("id") int id  , @RequestParam() int nquantity);
 
-    @GetMapping("/Basket/paid")
-    void payBasket();
+    @GetMapping("/basket/paid")
+    void payBasket(int userId);
 
 
 

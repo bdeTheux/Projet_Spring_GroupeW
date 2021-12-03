@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+
 @Service
 public class BasketService {
     private final BasketRepo repo;
@@ -35,6 +37,12 @@ public class BasketService {
         Basket basket = repo.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "No object with id " + id) );
         repo.delete(basket);
+    }
 
+    public void paid(int userId){
+        Iterable<Basket> baskets = repo.findAllByUserId(userId);
+        for (Basket bas :baskets) {
+            repo.delete(bas);
+        }
     }
 }

@@ -57,4 +57,9 @@ public class BackendBasketController {
         service.deleteProduct(id);
         return "delete";
     }
+    @GetMapping("/paid")
+    public void payBasket(@RequestParam() int userId){
+        service.paid(userId);
+
+    };
 }
