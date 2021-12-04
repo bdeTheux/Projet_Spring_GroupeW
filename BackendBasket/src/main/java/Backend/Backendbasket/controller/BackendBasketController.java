@@ -21,7 +21,7 @@ public class BackendBasketController {
     }
 
     @GetMapping()
-    public Iterable<Basket> findAllByUserId(@RequestParam() int userId) {
+    public Iterable<Basket> findAllByUserId(@RequestHeader(name= "Authorization") String token,@RequestParam() int userId) {
         return service.findAllByUserId(userId);
     }
 
@@ -31,7 +31,7 @@ public class BackendBasketController {
     }
 
     @PostMapping()
-    public ResponseEntity<Void> createBasket(@RequestBody Basket basket){
+    public ResponseEntity<Void> createBasket(@RequestHeader(name= "Authorization") String token,@RequestBody Basket basket){
         Basket bas = service.createBasket(basket);
         if(bas == null) return ResponseEntity.noContent().build();
         URI location = ServletUriComponentsBuilder
@@ -43,9 +43,9 @@ public class BackendBasketController {
     }
 
     @PutMapping("/update/{id}")
-    public String updateQuantity(@PathVariable("id") int id, @RequestBody Basket bas ) {
+    public String updateQuantity(@RequestHeader(name= "Authorization") String token,@PathVariable("id") int id, @RequestBody Basket bas ) {
         if (bas.getQuantity()<1) {
-            deleteProduct(id);
+            deleteProduct(token,id);
         }else {
             service.updateQuantity(id, bas);
             System.out.println("update get " + service.findById(id));
@@ -54,13 +54,14 @@ public class BackendBasketController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable("id") int id){
+    public String deleteProduct(@RequestHeader(name= "Authorization") String token,@PathVariable("id") int id){
         System.out.println("delete " + service.findById(id));
         service.deleteProduct(id);
         return "delete";
     }
+
     @GetMapping("/paid")
-    public void payBasket(@RequestParam int userId){
+    public void payBasket(@RequestHeader(name= "Authorization") String token,@RequestParam int userId){
         service.paid(userId);
 
     };

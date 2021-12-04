@@ -30,8 +30,8 @@ public class FrontendBasketController {
     }
 
     @GetMapping()
-    public String displayList(@RequestParam()int userId,Model model){
-        Iterable<Basket> baskets =  basketProxy.findAllByUserId(userId);
+    public String displayBasket(@CookieValue(value= "Authorization",defaultValue = "none") String token, @RequestParam()int userId, Model model){
+        Iterable<Basket> baskets =  basketProxy.findAllByUserId(token,userId);
         ArrayList<BasketDTO> basketDTOs = new ArrayList<BasketDTO>();
         double totalPrice = 0;
 
@@ -44,31 +44,28 @@ public class FrontendBasketController {
 
         model.addAttribute("uBasket",new Basket());
         model.addAttribute("userId",userId);
-       model.addAttribute("totalPrice",totalPrice);
-
         model.addAttribute("totalPrice",totalPrice);
-
         model.addAttribute("basketDTOs",basketDTOs);
         return "basket";
     }
 
     @PostMapping("")
-    public ModelAndView createBasket(@RequestHeader(name= "Authorization") String token,@ModelAttribute Basket basket) {
+    public ModelAndView createBasket(@CookieValue(value= "Authorization",defaultValue = "none") String token,@ModelAttribute Basket basket) {
         basketProxy.createBasket(token,basket);
         return new ModelAndView("redirect:/");
     }
     @GetMapping("/paid/{userId}")
-    public ModelAndView payBasket(@PathVariable("userId") int userId,Model model){
-        basketProxy.payBasket(userId);
+    public ModelAndView payBasket(@CookieValue(value= "Authorization",defaultValue = "none") String token,@PathVariable("userId") int userId,Model model){
+        basketProxy.payBasket(token,userId);
         User user =userProxy.getUser(userId);
         model.addAttribute("address", user.getAddress());
         return new ModelAndView("paid");
     }
 
     @PostMapping("/update/{id}")
-    public ModelAndView updateQuantity(@PathVariable("id") int id, @ModelAttribute Basket bas){
+    public ModelAndView updateQuantity(@CookieValue(value= "Authorization",defaultValue = "none") String token,@PathVariable("id") int id, @ModelAttribute Basket bas){
 
-        basketProxy.updateQuantity(id, bas);
+        basketProxy.updateQuantity(token,id, bas);
 
         String url = "http://localhost:7002/basket?userId="+bas.getUserId();
         return new ModelAndView(new RedirectView(url));

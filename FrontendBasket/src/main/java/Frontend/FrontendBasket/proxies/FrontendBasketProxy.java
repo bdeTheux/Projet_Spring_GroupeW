@@ -10,10 +10,9 @@ import java.util.Iterator;
 @Component
 @FeignClient(name = "BackendBasket-API",url="http://localhost:8002/")
 public interface FrontendBasketProxy {
-    //TODO
-    //RequestHeader => cookies ..
+
     @GetMapping("/basket")
-    Iterable<Basket> findAllByUserId(@RequestParam() int userId );
+    Iterable<Basket> findAllByUserId(@RequestHeader(name= "Authorization") String token,@RequestParam() int userId );
 
     @GetMapping("/basket")
     Object findProductDetails(@RequestParam() int productId);
@@ -25,10 +24,10 @@ public interface FrontendBasketProxy {
     void createBasket (@RequestHeader(name= "Authorization") String token,Basket basket);
 
     @PutMapping("/basket/update/{id}")
-    void updateQuantity(@PathVariable("id") int id  ,@RequestBody Basket bas);
+    void updateQuantity(@RequestHeader(name= "Authorization") String token,@PathVariable("id") int id  ,@RequestBody Basket bas);
 
     @GetMapping("/basket/paid")
-    void payBasket(@RequestParam() int userId);
+    void payBasket(@RequestHeader(name= "Authorization") String token,@RequestParam() int userId);
 
 
 
