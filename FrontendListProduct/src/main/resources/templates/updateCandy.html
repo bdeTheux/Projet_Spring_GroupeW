@@ -32,16 +32,16 @@
                 <form class="w3-container" method="post" th:action="@{/candies/update/{id}(id=${candy.getId()})}" th:object="${candy}">
 
                     <label>Name</label>
-                    <input class="w3-input" type="text" th:field="*{name}">
+                    <input class="w3-input" type="text" th:field="*{name}" required>
 
                     <label>Short Description</label>
-                    <input class="w3-input" type="text" th:field="*{shortDescription}">
+                    <input class="w3-input" type="text" th:field="*{shortDescription}" required>
 
                     <label>Description</label>
-                    <input class="w3-input" type="text" th:field="*{detailDescription}">
+                    <input class="w3-input" type="text" th:field="*{detailDescription}" required>
 
                     <label>Price</label>
-                    <input class="w3-input" type="text" th:field="*{price}">
+                    <input class="w3-input" type="number" th:field="*{price}" required>
 
                     <select class="w3-select" th:name="cat" th:field="*{cat}">
                         <option value="" disabled selected>Category</option>

@@ -2,6 +2,7 @@ package Frontend.FrontendListProduct.service;
 
 
 import Frontend.FrontendListProduct.model.Candy;
+import Frontend.FrontendListProduct.model.CandyDTO;
 import Frontend.FrontendListProduct.model.Category;
 import Frontend.FrontendListProduct.proxy.CandyProxy;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,14 @@ public class CandyService {
         }
         return cat;
     }
+    public boolean noEmptyField(CandyDTO candy){
+        if(candy.getName().equals("") || candy.getShortDescription().equals("") || candy.getDetailDescription().equals("")){
+            return false;
+        }
+        return true;
+    }
+
+
     public List<Candy> findAll(Category category, String order, Double min, Double max){
         return proxy.findAll(category, order, min, max);
     }

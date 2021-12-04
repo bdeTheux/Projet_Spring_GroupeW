@@ -64,8 +64,10 @@ public class CandyListController {
         }else{
             cand.setCategory(Category.PHYSICS);
         }
+        if(service.noEmptyField(candy)){
+            service.saveCandy(cand);
 
-        service.saveCandy(cand);
+        }
         return new ModelAndView("redirect:/candies");
     }
 
