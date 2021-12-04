@@ -85,17 +85,6 @@ public class CandyController {
 
         return candies;
 
-
-
-
-        /*if(category != null){
-            return (List<Candy>) service.findByCategory(Category.valueOf(category));
-        }else if(min != null && max != null){
-            return (List<Candy>) service.findByPrice(min, max);
-        }else{
-            return (List<Candy>) service.findAll();
-        }*/
-
     }
 
 

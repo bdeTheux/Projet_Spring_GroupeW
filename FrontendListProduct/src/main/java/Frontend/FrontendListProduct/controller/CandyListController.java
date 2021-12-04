@@ -103,6 +103,7 @@ public class CandyListController {
 
     @PostMapping("/candies/delete/{id}")
     public ModelAndView deleteCandy(@CookieValue(value="Authorization", defaultValue = "none")String token, @PathVariable("id") int id){
+        System.out.println(token);
         service.deleteCandy(id, token);
         return new ModelAndView("redirect:/candies");
     }
