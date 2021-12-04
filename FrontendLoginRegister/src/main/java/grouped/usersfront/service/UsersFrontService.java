@@ -137,9 +137,9 @@ public class UsersFrontService {
             setDefaultPasswords(user);
             user.setAddress("5, Rue haute, Ville-basse, 1234");
             user.setEmail("user@website.org");
-            user.setFirstName("John");
-            user.setLastName("Doe");
-            user.setPseudo("pseudo");
+            user.setFirstname("John");
+            user.setLastname("Doe");
+            user.setNickname("pseudo");
             model.addAttribute(USER, user);
         }
     }
@@ -150,7 +150,7 @@ public class UsersFrontService {
             setDefaultPasswords(userDTO);
             userDTO.setAddress(user.getAddress());
             userDTO.setEmail(user.getEmail());
-            userDTO.setPseudo(user.getPseudo());
+            userDTO.setNickname(user.getNickname());
             model.addAttribute(USER, userDTO);
         }
     }
@@ -166,6 +166,6 @@ public class UsersFrontService {
     }
 
     public ModelAndView redirectToProductPage() {
-        return new ModelAndView(new RedirectView(properties.getVehiclesFront()));
+        return new ModelAndView(new RedirectView("http:/localhost:7000/candies"));
     }
 }

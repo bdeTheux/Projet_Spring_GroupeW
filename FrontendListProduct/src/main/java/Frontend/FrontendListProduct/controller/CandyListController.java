@@ -47,7 +47,7 @@ public class CandyListController {
 
 
     @PostMapping("/candies")
-    public ModelAndView createCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category) {
+    public ModelAndView createCandy(@CookieValue(value="Authorization", defaultValue = "none")String token, @ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category) {
         String t = category;
         Candy cand = candy;
 
@@ -61,14 +61,14 @@ public class CandyListController {
             cand.setCategory(Category.PHYSICS);
         }
         if(service.noEmptyField(candy)){
-            service.saveCandy(cand);
+            service.saveCandy(cand,token);
 
         }
         return new ModelAndView("redirect:/candies");
     }
 
     @PostMapping("/candies/update/{id}")
-    public ModelAndView updateCandy(@ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category, @PathVariable("id") int id){
+    public ModelAndView updateCandy(@CookieValue(value="Authorization", defaultValue = "none")String token, @ModelAttribute CandyDTO candy, @RequestParam(name="cat", required = false) String category, @PathVariable("id") int id){
         Candy cdy = candy;
         System.out.println(cdy.toString());
         if(category.equals(Category.ELEMENTARY.getName())){
@@ -80,7 +80,7 @@ public class CandyListController {
         }else{
             cdy.setCategory(Category.PHYSICS);
         }
-        service.updateCandy(id, cdy);
+        service.updateCandy(id, cdy, token);
         return new ModelAndView("redirect:/candies");
     }
 
@@ -102,8 +102,8 @@ public class CandyListController {
 
 
     @PostMapping("/candies/delete/{id}")
-    public ModelAndView deleteCandy(@PathVariable("id") int id){
-        service.deleteCandy(id);
+    public ModelAndView deleteCandy(@CookieValue(value="Authorization", defaultValue = "none")String token, @PathVariable("id") int id){
+        service.deleteCandy(id, token);
         return new ModelAndView("redirect:/candies");
     }
     @GetMapping("/candy/{id}")

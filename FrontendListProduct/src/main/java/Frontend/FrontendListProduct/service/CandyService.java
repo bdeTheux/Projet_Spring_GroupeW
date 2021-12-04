@@ -49,19 +49,19 @@ public class CandyService {
         return proxy.findAll(category, order, min, max);
     }
 
-    public void saveCandy(Candy candy){
-        proxy.saveCandy(candy);
+    public void saveCandy(Candy candy, String token){
+        proxy.saveCandy(candy, token);
     }
 
-    public void updateCandy(int id, Candy candy){
-        proxy.updateCandy(id, candy);
+    public void updateCandy(int id, Candy candy, String token){
+        proxy.updateCandy(id, candy, token);
     }
     public Candy findById(int id){
         return proxy.findById(id);
     }
 
-    public void deleteCandy(int id){
-        proxy.deleteCandy(id);
+    public void deleteCandy(int id, String token){
+        proxy.deleteCandy(id, token);
     }
 
 }

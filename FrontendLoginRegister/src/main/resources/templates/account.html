@@ -23,7 +23,7 @@
     <br><br>
     <form method="post" th:action="@{/account/data}" th:object="${user}">
         <h3 th:if="${messageData != null}" th:text="${messageData}"></h3>
-        <p>Pseudo<input class="form-control" type="text" th:field="*{pseudo}" required></p>
+        <p>Pseudo<input class="form-control" type="text" th:field="*{nickname}" required></p>
         <p>Adresse<input class="form-control" type="text" th:field="*{address}" required></p>
         <p>Email<input class="form-control" type="email" th:field="*{email}" required></p>
         <p>Mot de passe<input class="form-control" type="password" placeholder="Mot de passe"
@@ -38,7 +38,7 @@
     <br>
     <form method="post" th:action="@{/account/password}" th:object="${user}">
         <h3 th:if="${messagePassword != null}" th:text="${messagePassword}"></h3>
-        <input class="form-control" type="text" th:field="*{pseudo}" hidden>
+        <input class="form-control" type="text" th:field="*{nickname}" hidden>
         <input class="form-control" type="text" th:field="*{address}" hidden>
         <input class="form-control" type="email" th:field="*{email}" hidden>
         <p>Mot de passe actuel<input class="form-control" type="password" placeholder="Mot de passe actuel"

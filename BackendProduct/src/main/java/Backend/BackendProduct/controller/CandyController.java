@@ -26,7 +26,7 @@ public class CandyController {
     }
     //Create one
     @PostMapping
-    public ResponseEntity<Void> createCandy(@RequestBody Candy candy) {
+    public ResponseEntity<Void> createCandy(@RequestBody Candy candy, @RequestHeader(name = "Authorization")String token) {
         Candy can = service.saveCandy(candy);
         if(can == null) return ResponseEntity.noContent().build();
         URI location = ServletUriComponentsBuilder
@@ -45,13 +45,13 @@ public class CandyController {
 
     //Delete one
     @DeleteMapping("/delete/{id}")
-    public void deleteCandy(@PathVariable("id") int id) {
+    public void deleteCandy(@PathVariable("id") int id, @RequestHeader(name = "Authorization")String token) {
         service.deleteCandy(id);
         //return new ModelAndView("redirect:/");
     }
     //Update one
     @PutMapping("/{id}")
-    public void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy) {
+    public void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy, @RequestHeader(name = "Authorization")String token) {
         service.updateCandy(candy, id);
     }
 

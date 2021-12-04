@@ -21,18 +21,18 @@ public interface CandyProxy {
     Candy findById(@PathVariable("id") int id);
 
     @PutMapping("/candies/{id}")
-    void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy);
+    void updateCandy(@PathVariable("id") int id, @RequestBody Candy candy, @RequestHeader(name = "Authorization")String token);
 
     /*@PostMapping("/candies")
     void createCandy(@RequestBody Candy candy);
      */
 
     @DeleteMapping("/candies/delete/{id}")
-    void deleteCandy(@PathVariable("id") int id);
+    void deleteCandy(@PathVariable("id") int id, @RequestHeader(name = "Authorization")String token);
 
     // ???
     @PostMapping("/candies")
-    void saveCandy(@RequestBody Candy candy);
+    void saveCandy(@RequestBody Candy candy, @RequestHeader(name = "Authorization")String token);
 
     @PostMapping("/candies")
     List<Category> getCategories();

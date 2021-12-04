@@ -22,10 +22,10 @@
     <br><br>
     <form method="post" th:action="@{/signin}" th:object="${user}">
         <h3 th:if="${message != null}" th:text="${message}"></h3>
-        <p>Prénom<input class="form-control" type="text" th:field="*{firstName}" required></p>
-        <p>Nom<input class="form-control" type="text" th:field="*{lastName}" required></p>
-        <p>Pseudo<input class="form-control" type="text" th:field="*{pseudo}" required></p>
-        <p>Anniversaire<input class="form-control" type="date" th:field="*{birthday}" required></p>
+        <p>Prénom<input class="form-control" type="text" th:field="*{firstname}" required></p>
+        <p>Nom<input class="form-control" type="text" th:field="*{lastname}" required></p>
+        <p>Pseudo<input class="form-control" type="text" th:field="*{nickname}" required></p>
+        <p>Anniversaire<input class="form-control" type="date" th:field="*{birthDate}" required></p>
         <p>Adresse<input class="form-control" type="text" th:field="*{address}" required></p>
         <p>Email<input class="form-control" type="email" th:field="*{email}" required></p>
         <p>Mot de passe<input class="form-control" type="password" placeholder="Mot de passe" th:field="*{password}"

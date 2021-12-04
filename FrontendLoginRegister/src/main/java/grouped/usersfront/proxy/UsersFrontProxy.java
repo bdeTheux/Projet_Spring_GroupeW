@@ -11,8 +11,8 @@ import java.util.List;
 
 
 @Component
-@FeignClient(name = "gateway")
-@LoadBalancerClient(name = "gateway", configuration = LoadBalancerConfig.class)
+@FeignClient(name="usersB", url="http://localhost:8001/")
+//@LoadBalancerClient(name = "gateway", configuration = LoadBalancerConfig.class)
 @RequestMapping("/users")
 public interface UsersFrontProxy {
 

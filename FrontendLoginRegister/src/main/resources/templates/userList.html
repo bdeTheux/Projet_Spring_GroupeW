@@ -46,22 +46,15 @@
             <div th:each="user:${users}">
                 <tr>
                     <td th:text="${user.id}"></td>
-                    <td th:text="${user.firstName}"></td>
-                    <td th:text="${user.lastName}"></td>
-                    <td th:text="${user.pseudo}"></td>
-                    <td th:text="${user.birthday}"></td>
+                    <td th:text="${user.firstname}"></td>
+                    <td th:text="${user.lastname}"></td>
+                    <td th:text="${user.nickname}"></td>
+                    <td th:text="${user.birthDate}"></td>
                     <td th:text="${user.address}"></td>
                     <td th:text="${user.email}"></td>
-                    <td th:text="${user.userType}"></td>
                     <td>
                         <a th:href="@{'/delete/' + ${user.id}}" style="text-decoration: none">
                             <button class="btn btn-danger">Supprimer</button>
-                        </a>
-                        <a th:href="@{'/toggleStatus/' + ${user.id}}" style="text-decoration: none">
-                            <button th:if="${#strings.equals(user.userType, 'CLIENT')}" class="btn btn-primary">Admin
-                            </button>
-                            <button th:if="${#strings.equals(user.userType, 'ADMIN')}" class="btn btn-primary">Client
-                            </button>
                         </a>
                     </td>
                 </tr>

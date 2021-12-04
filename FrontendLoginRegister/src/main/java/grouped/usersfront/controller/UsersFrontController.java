@@ -84,7 +84,6 @@ public class UsersFrontController {
             return service.errorOnSignin(user, redirectAttributes, "Les mots de passe ne correspondent pas");
         }
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        user.setUserType(User.USER_TYPES.CLIENT);
         User u;
         try {
             u = service.createUser(user);
@@ -147,13 +146,13 @@ public class UsersFrontController {
             return service.messageOnUpdateAccount(user, redirectAttributes, MESSAGE_DATA, "L'adresse n'est pas valide'");
         if (user.getEmail().isEmpty() || user.getEmail().isBlank())
             return service.messageOnUpdateAccount(user, redirectAttributes, MESSAGE_DATA, "L'email n'est pas valide");
-        if (user.getPseudo().isEmpty() || user.getPseudo().isBlank())
+        if (user.getNickname().isEmpty() || user.getNickname().isBlank())
             return service.messageOnUpdateAccount(user, redirectAttributes, MESSAGE_DATA, "Le pseudo n'est pas valide");
 
         u.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         u.setAddress(user.getAddress());
         u.setEmail(user.getEmail());
-        u.setPseudo(user.getPseudo());
+        u.setNickname(user.getNickname());
 
         try {
             service.updateUser(u.getId(), u);
@@ -182,10 +181,7 @@ public class UsersFrontController {
         if (u == null || u.getId() == id)
             return new ModelAndView(ROOT_REDIRECT);
         User user = service.findById(id);
-        if (user.getUserType() == User.USER_TYPES.CLIENT)
-            user.setUserType(User.USER_TYPES.ADMIN);
-        else
-            user.setUserType(User.USER_TYPES.CLIENT);
+
         try {
             service.updateUser(id, user);
         } catch (Exception e) {
