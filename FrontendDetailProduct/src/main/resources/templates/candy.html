@@ -51,7 +51,11 @@
             <h3>€</h3>
         </div>
         <div class="d-grid gap-2 d-md-block">
-            <button class="btn add-to-basket_button" type="button">Add to basket <i class="fa fa-shopping-cart"></i></button>
+            <form method="post" th:action="@{/candy/addToBasket/{id}(id=${candy.id})}" th:object="${basket}">
+                <input type="hidden" th:field="*{userId}" value="1">
+                <input type="hidden" th:field="*{productId}" th:value="${candy.id}">
+                <button type="submit" class="btn add-to-basket_button" >Add to basket <i class="fa fa-shopping-cart"></i></button>
+            </form>
         </div>
         <p class="category_product-details" th:text="${candy.category}">N/A</p>
     </div>

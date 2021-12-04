@@ -1,8 +1,10 @@
 package Frontend.FrontendDetailProduct.controller;
 
+import Frontend.FrontendDetailProduct.model.Basket;
 import Frontend.FrontendDetailProduct.model.Candy;
 import Frontend.FrontendDetailProduct.model.Category;
 import Frontend.FrontendDetailProduct.model.Comment;
+import Frontend.FrontendDetailProduct.proxy.BasketProxy;
 import Frontend.FrontendDetailProduct.proxy.CandyProxy;
 import Frontend.FrontendDetailProduct.proxy.CommentProxy;
 import org.springframework.stereotype.Controller;
@@ -19,10 +21,12 @@ import java.util.List;
 public class DetailProductController {
     private CandyProxy candyProxy;
     private CommentProxy commentProxy;
+    private BasketProxy basketProxy;
 
-    public DetailProductController(CandyProxy candyProxy, CommentProxy commentProxy){
+    public DetailProductController(CandyProxy candyProxy, CommentProxy commentProxy, BasketProxy basketProxy){
         this.candyProxy = candyProxy;
         this.commentProxy = commentProxy;
+        this.basketProxy = basketProxy;
     }
 
     @GetMapping("/{id}")
@@ -41,18 +45,32 @@ public class DetailProductController {
         model.addAttribute("comments", comments);
         model.addAttribute("average", avgRating);
         model.addAttribute("comment", new Comment());
+        model.addAttribute("basket", new Basket());
         return "candy";
     }
 
     @PostMapping("/{id}")
     public ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable("id") int candyId) {
         System.out.println(comment.toString());
-        comment.setCreationDate(LocalDate.now());
-        comment.setUserId(1);
-        comment.setCandyId(candyId);
-        comment.setState(Comment.States.VALIDE.name());
-        System.out.println(comment.toString());
-        commentProxy.addComment(comment);
-        return new ModelAndView("redirect:/candy/" + comment.getCandyId());
+        Comment c = comment;
+        c.setCreationDate(LocalDate.now());
+        c.setUserId(1);
+        c.setCandyId(candyId);
+        c.setState(Comment.States.VALIDE.name());
+        System.out.println(c.toString());
+        commentProxy.addComment(c);
+        return new ModelAndView("redirect:/candy/" + c.getCandyId());
+    }
+
+    @PostMapping("/addToBasket/{id}")
+    public ModelAndView addToBasket(@ModelAttribute Basket basket, @PathVariable("id") int candyId){
+        System.out.println(basket.toString());
+        Basket b = basket;
+        b.setUserId(1);
+        b.setProductId(candyId);
+        b.setQuantity(1);
+        System.out.println(b.toString());
+        basketProxy.createBasket(b);
+        return new ModelAndView("redirect:/candy/" + b.getProductId());
     }
 }
