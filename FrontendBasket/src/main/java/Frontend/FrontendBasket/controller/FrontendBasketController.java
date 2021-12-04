@@ -36,29 +36,27 @@ public class FrontendBasketController {
         double totalPrice = 0;
 
         for (Basket bas :baskets) {
+
             Candy candy = productProxy.findById(bas.getProductId());
             basketDTOs.add(new BasketDTO(bas.getId(),bas.getQuantity(),bas.getUserId(),bas.getProductId(),candy.getName(),candy.getPrice()));
             totalPrice+=(bas.getQuantity()*candy.getPrice());
         }
 
-
         model.addAttribute("uBasket",new Basket());
         model.addAttribute("userId",userId);
        model.addAttribute("totalPrice",totalPrice);
+
+        model.addAttribute("totalPrice",totalPrice);
+
         model.addAttribute("basketDTOs",basketDTOs);
         return "basket";
     }
 
     @PostMapping("")
-    public ModelAndView createBasket(@ModelAttribute Basket basket) {
-        basketProxy.createBasket(basket);
+    public ModelAndView createBasket(@RequestHeader(name= "Authorization") String token,@ModelAttribute Basket basket) {
+        basketProxy.createBasket(token,basket);
         return new ModelAndView("redirect:/");
     }
-   /* @GetMapping("/delete/{id}")
-    public ModelAndView deleteProduct(@PathVariable("id") int id){
-         basketProxy.deleteProduct(id);
-        return  new ModelAndView("basket");
-    }*/
     @GetMapping("/paid/{userId}")
     public ModelAndView payBasket(@PathVariable("userId") int userId,Model model){
         basketProxy.payBasket(userId);

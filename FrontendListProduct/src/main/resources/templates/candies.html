@@ -44,11 +44,11 @@
             <div class="w3-row-padding"  th:object="${priceRange}">
                 <div class="w3-twothird	">
                     <label>Min price</label>
-                    <input class="w3-input w3-border" type="text" th:field="${priceRange.min}" th:placeholder="0">
+                    <input class="w3-input w3-border" type="number" th:field="${priceRange.min}" th:placeholder="0">
                 </div>
                 <div class="w3-third">
                     <label>Max price</label>
-                    <input class="w3-input w3-border" type="text" th:value="${5}" th:field="${priceRange.max}" th:placeholder="0">
+                    <input class="w3-input w3-border" type="number" th:value="${5}" th:field="${priceRange.max}" th:placeholder="0">
                 </div>
             </div>
             <button type="submit" class="w3-button w3-large w3-circle w3-xlarge w3-ripple w3-teal">
@@ -66,7 +66,7 @@
 
             <div th:if="${!candies.empty}" >
                 <div th:each="candy : ${candies}" class="w3-third  w3-border w3-border-black w3-row-padding ">
-                    <a th:href="@{/candy/{id}(id=${candy.id})}">
+                    <a th:href="@{/candy/{id}(id=${candy.id})}" style="text-decoration: none; color:inherit">
                         <p th:text="${candy.getName()}" class="">Name :</p>
                         <p th:text="${candy.getPrice()}" class="">Price :</p>
                         <p th:text="${candy.getShortDescription()}" class="">description :</p>
@@ -94,16 +94,16 @@
         <form class="w3-container" method="post" th:action="@{/candies}" th:object="${candy}">
 
             <label>Name</label>
-            <input class="w3-input" type="text" th:field="*{name}">
+            <input class="w3-input" type="text" th:field="*{name}" required>
 
             <label>Short Description</label>
-            <input class="w3-input" type="text" th:field="*{shortDescription}">
+            <input class="w3-input" type="text" th:field="*{shortDescription}" required>
 
             <label>Description</label>
-            <input class="w3-input" type="text" th:field="*{detailDescription}">
+            <input class="w3-input" type="text" th:field="*{detailDescription}" required>
 
             <label>Price</label>
-            <input class="w3-input" type="text" th:field="*{price}">
+            <input class="w3-input" type="number" th:field="*{price}" required>
 
             <select class="w3-select" th:name="cat" th:field="*{cat}">
                 <option value="" disabled selected>Category</option>

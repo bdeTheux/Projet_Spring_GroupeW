@@ -1,54 +1,104 @@
 <!DOCTYPE html>
-<html lang="en" html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<html html="" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>Charlie's - The Candies That Gives Power</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <!-- Bootstrap CSS v5.0.2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/img/logo.svg" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="icon" th:href="@{/images/logo.svg}" type="image/x-icon">
 </head>
-  <body>
-    <ul class="nav justify-content-around align-items-stretch">
-        <li class="nav-item">
-          <h5>
-            <a class="nav-link active" aria-current="page" href="#">The Candies</a>
-          </h5>
-        </li>
-        <li class="nav-item">
-            <img src="/img/logo.png" alt="" id="logo">
-        </li>
-        <li class="nav-item">
-          <h5>
-            <a class="nav-link" href="#">Users</a>
-          </h5>
-        </li>
-    </ul>
-    <div class="d-flex justify-content-center product-container">
-        <div class="image-product-container">
-            <figure class="image-product">            
-                <img src="https://www.viewhotels.jp/ryogoku/wp-content/uploads/sites/9/2020/03/test-img.jpg" alt="">
-            </figure>
-        </div>
-        <div class="d-flex flex-column product-details">
-            <h1 th:text="${candy.name}">N/A</h1>
-            <p th:text="${candy.detailDescription}">N/A</p>
-            <h2 th:text="${candy.price}">N/A</h2>
-            <p th:text="${candy.category}" class="category_product-details">N/A</p>
-        </div>
+<body>
+<ul class="nav justify-content-around align-items-stretch">
+    <li class="nav-item">
+        <h5>
+            <a aria-current="page" class="nav-link active" href="http://localhost:7000/candies">The Candies</a>
+        </h5>
+    </li>
+    <li class="nav-item">
+        <img alt="" id="logo" th:src="@{/images/logo.png}">
+    </li>
+    <li class="nav-item">
+        <h5>
+            <a class="nav-link" href="">Users</a>
+        </h5>
+    </li>
+</ul>
+<div class="d-flex justify-content-center product-container">
+    <div class="image-product-container">
+        <figure class="image-product">
+            <img alt="" src="https://cdn.pixabay.com/photo/2021/03/17/09/36/candy-6101868_1280.jpg">
+        </figure>
     </div>
-    <div class="d-flex product-comments">
-        <h2>Comments</h2>
+    <div class="d-flex flex-column product-details">
+        <h1 th:text="${candy.name}">N/A</h1>
+        <div class="rating-total" th:if="${!comments.empty}">
+            <p th:text="${average}">N/A</p>
+            <i class="fa fa-star fa-lg"></i>
+        </div>
+        <div class="rating-total" th:if="${comments.empty}">
+            <p>No rating available, yet ;)</p>
+        </div>
+
+        <p th:text="${candy.detailDescription}">N/A</p>
+
+        <div id="price">
+            <h2 th:text="${candy.price}">N/A</h2>
+            <h3>€</h3>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+            <button class="btn add-to-basket_button" type="button">Add to basket <i class="fa fa-shopping-cart"></i></button>
+        </div>
+        <p class="category_product-details" th:text="${candy.category}">N/A</p>
+    </div>
+</div>
+<div class="d-flex product-comments">
+    <h2>Comments</h2>
+
+    <div class="no-comments"  th:if="${comments.empty}">
+        <div class="alert alert-secondary" role="alert">
+          <strong>No comments yet!</strong>
+        </div>
+        
+    </div>
+
+    <div class="comment" th:each="comment: ${comments}">
+        <h5 th:text="${comment.userId}">Name N/A</h5>
+        <p class="comment-text" th:text="${comment.text}">Text N/A</p>
+        <div class="rating-total">
+            <p th:text="${comment.rating}">Rating N/A</p>
+            <i class="fa fa-star fa-lg"></i>
+        </div>
+        <p class="date-comment" th:text="${comment.creationDate}">Date N/A</p>
+    </div>
+
+    <div class="submit-comment">
+        <form method="post" th:action="@{/candy}" th:object="${comment}">
+            <input type="text" class="form-control" placeholder="Write your comment here" th:field="*{text}">
+            <label for="customRange2" class="form-label">Rating</label>
+            <input type="range" class="form-range" min="0" max="5" id="customRange2" th:field="*{rating}">
+            <input type="hidden" th:field="*{userId}" value="1">
+            <input type="hidden" th:field="*{candyId}" th:value="${candy.id}">
+            <input type="hidden" th:field="*{state}" value="valide">
+            <input type="submit" value="Submit">
+
+        </form>
     </div>
     
+    
 
-      
-      
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  </body>
+
+</div>
+
+
+
+
+<!-- Bootstrap JavaScript Libraries -->
+<script crossorigin="anonymous" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -31,7 +31,7 @@ public class UserController {
         service.updateUser(user, id);
     }
     @GetMapping
-    public List<User> getUsers(){ return (List<User>) service.findAll();}
+    public Iterable<User> getUsers(){ return service.findAll();}
     //TODO
     @DeleteMapping("/{id}")
     public ModelAndView deleteCandy(@PathVariable("id") int id) {

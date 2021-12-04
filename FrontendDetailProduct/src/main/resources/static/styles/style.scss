@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;0,800;0,900;1,400&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@100;400;700&display=swap");
+
+$primary: #3c2b62;
+$mid: #543b8a;
+$light: #e4c1f9;
+$yellow: #ede7b1;
+$font-condensed: "Roboto Condensed", sans-serif;
+
+:root {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin-top: 1ch;
+}
+
+.product-container {
+  margin-top: 2%;
+}
+#logo {
+  width: 200px;
+}
+
+.image-product {
+  height: 20rem;
+  width: 20rem;
+  object-fit: contain;
+  overflow: hidden;
+  position: relative;
+  img {
+    height: 20rem;
+  width: 20rem;
+    object-fit: contain;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+  }
+}
+
+.product-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  //position: relative;
+  h1 {
+    font-family: $font-condensed;
+    //font-style: 700;
+    font-variant: small-caps;
+    //position: absolute;
+    float: left;
+  }
+  /*
+    h2{
+        position: relative;
+        left: 100%;
+    }
+    */
+}
+
+.rating-total {
+  //margin-top: auto;
+  p {
+    display: inline-block;
+    font-weight: 700;
+  }
+  i {
+    display: inline-block;
+    color: #f4b70b;
+    //text-shadow: 0 0 2px black;
+  }
+}
+
+.category_product-details {
+  color: gray;
+  font-weight: 200;
+  font-style: italic;
+  margin-top: auto;
+}
+.nav-link {
+  color: $primary;
+  border-radius: 10px;
+  font-family: $font-condensed;
+  font-variant: small-caps;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: $primary !important;
+  color: $light;
+}
+#price {
+  display: inline;
+  h2 {
+    float: left;
+  }
+  h3 {
+    color: grey;
+    font-style: italic;
+    float: left;
+  }
+}
+.add-to-basket_button {
+  background-color: $primary;
+  color: white;
+  margin-top: auto;
+  &:hover {
+    color: $light;
+    background-color: $mid;
+  }
+}
+.product-comments {
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 5rem;
+  flex-direction: column;
+  h2 {
+    margin-left: 3rem;
+    font-family: $font-condensed;
+    font-variant: small-caps;
+  }
+}
+.comment{
+  background-color: #eaeaea;
+  border-radius: 8px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  h5{
+    font-family: $font-condensed;
+    font-weight: bold;
+  }
+  .comment-text{
+    font-family: $font-condensed;
+  }
+}
+.date-comment{
+  color: rgb(102, 102, 102);
+  font-style: italic;
+  align-self: flex-end;
+  margin-left: auto;
+}
+.submit-comment{
+  padding: 1.5rem;
+  background-color: blanchedalmond;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  .form-range{
+    width: 25%;
+  }
+}
+

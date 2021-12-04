@@ -35,13 +35,9 @@ public class CandyListController {
         if(min != null && max != null && min == 0.0 && max == 0.0) max = null;
         List<Candy> candiesList = service.findAll(service.findCategory(category), order, min, max);
         List<String> orderList = new ArrayList<String>(Arrays.asList("none", "asc", "desc"));
-        System.out.println("order :" + order);
-        System.out.println("min: " + min);
-        System.out.println("max: " + max);
         model.addAttribute("priceRange", new PriceRange());
         model.addAttribute("orders", orderList);
         model.addAttribute("candies", candiesList);
-       // model.addAttribute("candies", category==null ? listCandies(): findByCategory(category));
         model.addAttribute("categories", service.getCategories());
         model.addAttribute("candy", new CandyDTO());
         return "candies";
@@ -64,8 +60,10 @@ public class CandyListController {
         }else{
             cand.setCategory(Category.PHYSICS);
         }
+        if(service.noEmptyField(candy)){
+            service.saveCandy(cand);
 
-        service.saveCandy(cand);
+        }
         return new ModelAndView("redirect:/candies");
     }
 
@@ -105,7 +103,6 @@ public class CandyListController {
 
     @PostMapping("/candies/delete/{id}")
     public ModelAndView deleteCandy(@PathVariable("id") int id){
-        System.out.println("je suis ici");
         service.deleteCandy(id);
         return new ModelAndView("redirect:/candies");
     }
