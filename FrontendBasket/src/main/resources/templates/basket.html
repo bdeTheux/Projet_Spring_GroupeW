@@ -22,9 +22,9 @@
         <div class="w3-container">
             <img class="image" src="img/logo.png" title="Logo"/>
         </div>
-        <div class="w3-bar-item">Profil</div>
-        <div class="w3-bar-item">Candies</div> <!--lien vers les pages -->
-        <div class="w3-bar-item">Basket</div>
+        <div class="w3-bar-item"><a class="color"  th:href="@{basket/profil/{userId}(userId=${userId})}">Profil</a></div>
+        <div class="w3-bar-item"><a class="color"  th:href="@{basket/candies}">Candies</a></div>
+        <div class="w3-bar-item"><a class="color" th:href="@{basket/basket/{userId}(userId=${userId})}">Basket</a></div>
     </div>
 </header>
 
@@ -33,19 +33,29 @@
     <section class="mainContainer center">
         <div th:if=${basketDTOs.empty} class="w3-display-middle">
             <p>There's no candies in your basket</p>
-            <a href="candies">Shop now !</a><!--lien vers la liste des candy-->
+            <a th:href="@{basket/candies}">Shop now !</a><!--lien vers la liste des candy-->
         </div>
 
         <div th:if="${!basketDTOs.empty}" class="container">
             <ul th:each="basket : ${basketDTOs}" class="row ">
-                <li th:text="${basket.CandyName}" class="col align">Product :</li><!--name of product-->
-                <li th:text="${basket.CandyPrice}" class="col align">Price of product :</li>
-                <li th:text="${basket.quantity}" class="col align">Quantity :</li>
-                <li class="col"><img th:href="@{/basket/delete/{id}(id=${basket.id})}"><img class=" deleteIcon " src="img/delete_icon.jpg" title="deleteProduct"></img></a></li>
+                <li th:text="${basket.candyName}" class="col align">Product :</li>
+                <li th:text="${basket.candyPrice}" class="col align">Price of product :</li>
+                <li th:text="${basket.quantity}" class="col align">Quantity</li>
+                <li class="col align">
+                    <form method="post" th:action="@{/basket/update/{id}(id=${basket.id})}" th:object="${uBasket}">
+                        <input th:name="id" type="hidden" th:value="${uBasket.id}">
+                        <input th:name="userId" type="hidden" th:value="${basket.userId}">
+                        <input th:name="productId" type="hidden" th:value="${uBasket.productId}">
+                        <label> quantity</label>
+                        <input th:name="quantity" type="number" th:value="${uBasket.quantity}">
+                        <input type="submit"  value="update quantity">
+                    </form>
+                </li>
             </ul>
             <ul>
-            <li th:text="${totalPrice}" class="basket">Total Price:</li>
-            <li class="basket"><a th:href="@{/basket/paid?userId=${basketDTOs.get(0).userId}}"><button>PAID</button></a></li>
+                <li th:text="${totalPrice}" class="basket"><h4>Total</h4></li>
+
+            <li class="basket"><a th:href="@{/basket/paid/{userId}(userId=${userId})}"><button>PAID</button></a></li>
             </ul>
         </div>
     </section>
