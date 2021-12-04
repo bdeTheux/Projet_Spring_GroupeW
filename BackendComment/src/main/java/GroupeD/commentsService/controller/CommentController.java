@@ -19,29 +19,29 @@ public class CommentController {
         return commentsService.findByUserId(id);
     }
 
-    @GetMapping("/vehicle/{id}")
-    public Iterable<Comment> getCommentsByVehicle(@PathVariable("id") int id) {
-        return commentsService.findByVehicleId(id);
+    @GetMapping("/candy/{id}")
+    public Iterable<Comment> getCommentsByCandy(@PathVariable("id") int id) {
+        return commentsService.findByCandyId(id);
     }
 
-    @GetMapping("/vehicle/{vId}/withuser/{uId}")
-    public Iterable<Comment> getCommentsByVehicleAndUser(@PathVariable("vId") int vId, @PathVariable("uId") int uId) {
-        return commentsService.findByVehicleIdAndUserId(vId, uId);
+    @GetMapping("/candy/{cId}/withuser/{uId}")
+    public Iterable<Comment> getCommentsByCandyAndUser(@PathVariable("cId") int cId, @PathVariable("uId") int uId) {
+        return commentsService.findByCandyIdAndUserId(cId, uId);
     }
 
-    @GetMapping("/vehicle/{vId}/exceptuser/{uId}")
-    public Iterable<Comment> getCommentsByVehicleExceptUser(@PathVariable("vId") int vId, @PathVariable("uId") int uId) {
-        return commentsService.findByVehicleIdExceptUserId(vId, uId);
+    @GetMapping("/candy/{cId}/exceptuser/{uId}")
+    public Iterable<Comment> getCommentsByCandyExceptUser(@PathVariable("cId") int cId, @PathVariable("uId") int uId) {
+        return commentsService.findByCandyIdExceptUserId(cId, uId);
     }
 
-    @GetMapping("/vehicle/{vId}/count")
-    public long countCommentsByVehicleId(@PathVariable("vId") int vId) {
-        return commentsService.countByVehicleId(vId);
+    @GetMapping("/candy/{cId}/count")
+    public long countCommentsByCandyId(@PathVariable("cId") int cId) {
+        return commentsService.countByCandyId(cId);
     }
 
-    @GetMapping("/vehicle/{vId}/average")
-    public double averageByVehicleId(@PathVariable("vId") int vId) {
-        return commentsService.averageByVehicleId(vId);
+    @GetMapping("/candy/{cId}/average")
+    public double averageByCandyId(@PathVariable("cId") int cId) {
+        return commentsService.averageByCandyId(cId);
     }
 
 

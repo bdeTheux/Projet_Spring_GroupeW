@@ -3,11 +3,14 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/BackendProduct/pom.xml" />
-        <option value="$PROJECT_DIR$/FrontendBasket/pom.xml" />
         <option value="$PROJECT_DIR$/FrontendListProduct/pom.xml" />
-        <option value="$PROJECT_DIR$/FrontendDetailProduct/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaServer/pom.xml" />
+        <option value="$PROJECT_DIR$/BackendComment/pom.xml" />
+        <option value="$PROJECT_DIR$/FrontendLoginRegister/pom.xml" />
+        <option value="$PROJECT_DIR$/BackendBasket/pom.xml" />
+        <option value="$PROJECT_DIR$/BackendUser/pom.xml" />
+        <option value="$PROJECT_DIR$/BackendProduct/pom.xml" />
+        <option value="$PROJECT_DIR$/FrontendDetailProduct/pom.xml" />
       </list>
     </option>
   </component>

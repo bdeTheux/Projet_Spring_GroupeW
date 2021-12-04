@@ -1,4 +1,4 @@
-package GroupeD.commentsService.model;
+package Frontend.FrontendDetailProduct.model;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity(name = "comments")
+@Entity(name = "comment")
 @Data
 public class Comment {
 
@@ -30,6 +30,7 @@ public class Comment {
 
     private String state;
 
+
     public enum States {
         SUPPRIME("supprimé"), VALIDE("valide");
         String name;
@@ -38,7 +39,7 @@ public class Comment {
             this.name = name;
         }
     }
-
+/*
     public void setRating(int rating) {
         if (rating < 0 || rating > 5) throw new IllegalArgumentException("Bad rating value");
         this.rating = rating;
@@ -52,4 +53,6 @@ public class Comment {
         else
             throw new IllegalArgumentException("Invalid state");
     }
+
+     */
 }

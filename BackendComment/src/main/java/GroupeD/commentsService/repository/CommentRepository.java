@@ -12,14 +12,15 @@ public interface CommentRepository extends CrudRepository<Comment, Integer> {
 
     List<Comment> findByUserIdOrderByCreationDateAsc(int userId);
 
-    List<Comment> findByVehicleIdOrderByCreationDateAsc(int vehicleId);
+    //@Query("select c.id, c.creationDate, c.rating, c.state, c.text, c.userId from comments c where c.candyId = ?1")
+    List<Comment> findByCandyIdOrderByCreationDateAsc(int candyId);
 
-    List<Comment> findByVehicleIdAndUserIdOrderByCreationDateAsc(int vehicleId, int userId);
+    List<Comment> findByCandyIdAndUserIdOrderByCreationDateAsc(int candyId, int userId);
 
-    List<Comment> findByVehicleIdAndUserIdNotOrderByCreationDateAsc(int vehicleId, int userId);
+    List<Comment> findByCandyIdAndUserIdNotOrderByCreationDateAsc(int candyId, int userId);
 
-    long countByVehicleId(int vehicleId);
+    long countByCandyId(int candyId);
 
-    @Query("select avg(c.rating) from comments c where c.vehicleId = ?1")
-    double averageByVehicleId(int vehicleId);
+    @Query("select avg(c.rating) from comments c where c.candyId = ?1")
+    double averageByCandyId(int candyId);
 }
