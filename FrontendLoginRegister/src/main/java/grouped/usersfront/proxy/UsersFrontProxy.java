@@ -25,7 +25,7 @@ public interface UsersFrontProxy {
     @GetMapping("/email/{email}")
     User findByEmail(@PathVariable("email") String email);
 
-    @PostMapping
+    @PostMapping("")
     User createUser(@RequestBody User user);
 
     @PutMapping("/{id}")

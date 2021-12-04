@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -79,19 +80,20 @@ public class UsersFrontController {
     }
 
     @PostMapping("/signin")
-    public ModelAndView signin(@ModelAttribute UserDTO user, HttpServletResponse response, RedirectAttributes redirectAttributes) {
-        if (!user.getPassword().equals(user.getPasswordConfirm())) {
+    public ModelAndView signin(@ModelAttribute User user, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+        /*if (!user.getPassword().equals(user.getPasswordConfirm())) {
             return service.errorOnSignin(user, redirectAttributes, "Les mots de passe ne correspondent pas");
-        }
+        }*/
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        User u;
+        //user.setId(1);
         try {
-            u = service.createUser(user);
+            service.createUser(user);
         } catch (Exception e) {
-            return service.errorOnSignin(user, redirectAttributes, "L'adresse email est déjà utilisée");
+           // return service.errorOnSignin(user, redirectAttributes, "L'adresse email est déjà utilisée");
         }
-        service.insertCookieAfterLogin(response, u.getId());
-        return service.redirectToProductPage();
+        service.insertCookieAfterLogin(response, user.getId());
+        String url = "http://localhost:7000/candies";
+        return new ModelAndView(new RedirectView(url));
     }
 
     @GetMapping("/logout")
@@ -162,7 +164,7 @@ public class UsersFrontController {
         return service.messageOnUpdateAccount(user, redirectAttributes, MESSAGE, "Vos données ont été modifiées");
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}")
     public ModelAndView deleteUser(Model model, @CookieValue(value = TOKEN, defaultValue = NONE) String token, @PathVariable("id") int id) {
         User u = service.getUserFromToken(token);
         if (u == null || u.getId() == id)
