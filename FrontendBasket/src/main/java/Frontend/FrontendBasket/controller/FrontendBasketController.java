@@ -35,10 +35,12 @@ public class FrontendBasketController {
         double totalPrice = 0;
 
         for (Basket bas :baskets) {
+            System.out.println(bas);
             Candy candy = productProxy.findById(bas.getProductId());
             basketDTOs.add(new BasketDTO(bas.getId(),bas.getQuantity(),bas.getUserId(),bas.getProductId(),candy.getName(),candy.getPrice()));
             totalPrice+=(bas.getQuantity()*candy.getPrice());
         }
+        System.out.println("troisieme");
         model.addAttribute("totalPrice",totalPrice);
         model.addAttribute("basketDTOs",basketDTOs);
         return "basket";
