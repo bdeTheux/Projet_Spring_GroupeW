@@ -5,6 +5,10 @@ import Frontend.FrontendListProduct.model.Candy;
 import Frontend.FrontendListProduct.model.CandyDTO;
 import Frontend.FrontendListProduct.model.Category;
 import Frontend.FrontendListProduct.proxy.CandyProxy;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +21,13 @@ import java.util.List;
 public class CandyService {
 
     private CandyProxy proxy;
+    private final JWTVerifier verifier;
+    private static Algorithm jwtAlgo;
+
     public CandyService(CandyProxy proxy){
         this.proxy = proxy;
+        this.jwtAlgo = Algorithm.HMAC256("super_secret");
+        this.verifier = JWT.require(jwtAlgo).withIssuer("auth0").build();
     }
 
     public Category findCategory(String category){
@@ -53,6 +62,15 @@ public class CandyService {
         proxy.saveCandy(candy, token);
     }
 
+    public int verify(String token){
+        try{
+            DecodedJWT decodedJWT = verifier.verify(token);
+            int userId = decodedJWT.getClaim("user").asInt();
+            return userId;
+        }catch (Exception e){
+            return -1;
+        }
+    }
     public void updateCandy(int id, Candy candy, String token){
         proxy.updateCandy(id, candy, token);
     }

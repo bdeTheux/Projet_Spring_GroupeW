@@ -24,6 +24,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") int id) {
+        System.out.println("id : " + id);
         return service.findById(id);
     }
     @PutMapping("/{id}")
@@ -33,12 +34,12 @@ public class UserController {
     @GetMapping
     public Iterable<User> getUsers(){ return service.findAll();}
     //TODO
+
     @DeleteMapping("/{id}")
     public ModelAndView deleteCandy(@PathVariable("id") int id) {
         service.deleteUser(service.findById(id));
         return new ModelAndView("redirect:/");
     }
-
 
     //TODO
     @PostMapping

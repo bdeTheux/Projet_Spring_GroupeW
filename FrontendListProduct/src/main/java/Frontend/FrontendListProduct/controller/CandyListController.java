@@ -103,12 +103,24 @@ public class CandyListController {
 
     @PostMapping("/candies/delete/{id}")
     public ModelAndView deleteCandy(@CookieValue(value="Authorization", defaultValue = "none")String token, @PathVariable("id") int id){
+        System.out.println(token);
         service.deleteCandy(id, token);
         return new ModelAndView("redirect:/candies");
     }
     @GetMapping("/candy/{id}")
     public ModelAndView getCandy(@PathVariable("id") int id){
         String url = "http://localhost:7001/candy/" + id;
+        return new ModelAndView(new RedirectView(url));
+    }
+
+    @GetMapping("/candies/basket")
+    public ModelAndView getBasket(@CookieValue(value="Authorization", defaultValue = "none")String token){
+        if(token == null || token.equals("none")){
+            return new ModelAndView(new RedirectView("http://localhost:7003/signin"));
+        }
+        int userId = service.verify(token);
+
+        String url = "http://localhost:7002/basket?userId="+userId;
         return new ModelAndView(new RedirectView(url));
     }
 
