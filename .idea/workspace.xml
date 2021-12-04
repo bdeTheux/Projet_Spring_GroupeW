@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="add comment - specific to a candy now">
-      <change afterPath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/model/Basket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/proxy/BasketProxy.java" afterDir="false" />
+    <list default="true" id="f5662b4a-d21a-4821-b55a-0210dc84e36d" name="Changes" comment="add to basket is functional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontendDetailProduct/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendDetailProduct/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/controller/DetailProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/controller/DetailProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendDetailProduct/src/main/resources/templates/candy.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendDetailProduct/src/main/resources/templates/candy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/proxy/BasketProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendDetailProduct/src/main/java/Frontend/FrontendDetailProduct/proxy/BasketProxy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +53,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.FrontendListProductApplication">
-    <configuration name="All in generated-requests" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http">
-      <method v="2" />
-    </configuration>
     <configuration name="FrontendDetailProductApplication#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/FrontendDetailProductApplication.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -67,6 +63,9 @@
       <method v="2" />
     </configuration>
     <configuration name="generated-requests#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -165,7 +164,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.All in generated-requests" />
       <item itemvalue="HTTP Request.FrontendDetailProductApplication#1" />
       <item itemvalue="HTTP Request.generated-requests#1" />
       <item itemvalue="HTTP Request.generated-requests#2" />
@@ -180,14 +178,15 @@
       <item itemvalue="Spring Boot.BackendbasketApplication" />
       <item itemvalue="Spring Boot.BackendProductApplication (1)" />
       <item itemvalue="HTTP Request.generated-requests#4" />
+      <item itemvalue="HTTP Request.generated-requests#7" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests#7" />
         <item itemvalue="HTTP Request.generated-requests#4" />
         <item itemvalue="HTTP Request.generated-requests#1" />
         <item itemvalue="HTTP Request.generated-requests#2" />
         <item itemvalue="HTTP Request.FrontendDetailProductApplication#1" />
-        <item itemvalue="HTTP Request.All in generated-requests" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +205,7 @@
       <workItem from="1638366629878" duration="905000" />
       <workItem from="1638620327858" duration="3680000" />
       <workItem from="1638625990527" duration="2889000" />
-      <workItem from="1638644330056" duration="9357000" />
+      <workItem from="1638644330056" duration="11071000" />
     </task>
     <task id="LOCAL-00001" summary="few bug fixes">
       <created>1638265438214</created>
@@ -243,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638651329202</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add to basket is functional">
+      <created>1638654957665</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1638654957665</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,7 +273,8 @@
     <MESSAGE value="prepare for merge" />
     <MESSAGE value="finally merged: detailProduct page almost fully functionnal + added link to candies page" />
     <MESSAGE value="add comment - specific to a candy now" />
-    <option name="LAST_COMMIT_MESSAGE" value="add comment - specific to a candy now" />
+    <MESSAGE value="add to basket is functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to basket is functional" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

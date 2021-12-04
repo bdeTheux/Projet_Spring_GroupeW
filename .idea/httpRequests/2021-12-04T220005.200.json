@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "text": "supep",
+    "rating": 4,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 1,
+    "state": "valide"
+  }
+]

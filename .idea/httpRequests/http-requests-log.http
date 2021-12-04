@@ -1,0 +1,47 @@
+GET http://localhost:8001/users
+
+<> 2021-12-04T232115.200.json
+
+###
+
+GET http://localhost:8003/comments
+
+<> 2021-12-04T220024.200.json
+
+###
+
+GET http://localhost:8003/comments
+
+<> 2021-12-04T220005.200.json
+
+###
+
+GET http://localhost:8003/comments
+
+<> 2021-12-04T215224.200.json
+
+###
+
+GET http://localhost:8003/comments
+
+<> 2021-12-04T215131.200.json
+
+###
+
+GET http://localhost:9000/comments
+
+###
+
+POST http://localhost:8000/candies
+Content-Type: application/json
+
+{
+  "name" : "Super Candy",
+  "shortDescription" : "Super Cool",
+  "detailDescription" : "Makes you super powerful",
+  "price" : 22,
+  "category" : "PHYSICS"
+}
+
+###
+

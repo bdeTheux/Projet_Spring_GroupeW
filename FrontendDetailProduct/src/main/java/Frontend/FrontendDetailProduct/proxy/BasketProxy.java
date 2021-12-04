@@ -12,18 +12,21 @@ import java.util.List;
 @FeignClient(name="basketAPI", url="http://localhost:8002/")
 public interface BasketProxy {
 
-    @GetMapping
-    List<Basket> findAllByUserId(@RequestParam(required = false)int userId);
+    @GetMapping("/basket")
+    Iterable<Basket> findAllByUserId(@RequestHeader(name= "Authorization") String token,@RequestParam() int userId );
 
-    @PostMapping("/basket")
-    void createBasket(@RequestBody Basket Basket);
+    @GetMapping("/basket")
+    Object findProductDetails(@RequestParam() int productId);
 
     @GetMapping("/basket/{id}")
     Basket findById(@PathVariable("id") int id);
 
-    @PutMapping("/basket/{id}")
-    void updateQuantity(@PathVariable("id") int id, @RequestBody Basket Basket);
+    @PostMapping("/basket")
+    void createBasket (@RequestHeader(name= "Authorization") String token,Basket basket);
 
-    @DeleteMapping("/candies/{id}")
-    void deleteBasket(@PathVariable("id") int id);
+    @PutMapping("/basket/update/{id}")
+    void updateQuantity(@RequestHeader(name= "Authorization") String token,@PathVariable("id") int id  ,@RequestBody Basket bas);
+
+    @GetMapping("/basket/paid")
+    void payBasket(@RequestHeader(name= "Authorization") String token,@RequestParam() int userId);
 }
