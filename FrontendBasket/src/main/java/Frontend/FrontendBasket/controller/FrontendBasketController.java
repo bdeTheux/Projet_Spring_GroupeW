@@ -33,7 +33,7 @@ public class FrontendBasketController {
         this.basketProxy = basketProxy;
         this.productProxy=productProxy;
         this.userProxy=userProxy;
-        this.jwtAlgo = Algorithm.HMAC256("super_secret");
+        this.jwtAlgo = Algorithm.HMAC256("secret");
         this.verifier = JWT.require(jwtAlgo).withIssuer("auth0").build();
     }
     public int verifyToken(String token){
