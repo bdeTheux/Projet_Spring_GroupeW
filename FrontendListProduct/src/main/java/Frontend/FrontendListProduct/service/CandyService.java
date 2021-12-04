@@ -26,7 +26,7 @@ public class CandyService {
 
     public CandyService(CandyProxy proxy){
         this.proxy = proxy;
-        this.jwtAlgo = Algorithm.HMAC256("super_secret");
+        this.jwtAlgo = Algorithm.HMAC256("secret");
         this.verifier = JWT.require(jwtAlgo).withIssuer("auth0").build();
     }
 
@@ -68,6 +68,7 @@ public class CandyService {
             int userId = decodedJWT.getClaim("user").asInt();
             return userId;
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return -1;
         }
     }

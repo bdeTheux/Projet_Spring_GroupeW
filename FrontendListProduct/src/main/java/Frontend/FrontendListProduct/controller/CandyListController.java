@@ -115,12 +115,25 @@ public class CandyListController {
 
     @GetMapping("/candies/basket")
     public ModelAndView getBasket(@CookieValue(value="Authorization", defaultValue = "none")String token){
+        System.out.println(token);
+        if(token == null || token.equals("none")){
+            return new ModelAndView(new RedirectView("http://localhost:7003/signin"));
+        }
+        int userId = service.verify(token);
+        System.out.println(userId);
+
+        String url = "http://localhost:7002/basket?userId="+userId;
+        return new ModelAndView(new RedirectView(url));
+    }
+
+    @GetMapping("/candies/profile")
+    public ModelAndView getProfile(@CookieValue(value="Authorization", defaultValue = "none")String token){
         if(token == null || token.equals("none")){
             return new ModelAndView(new RedirectView("http://localhost:7003/signin"));
         }
         int userId = service.verify(token);
 
-        String url = "http://localhost:7002/basket?userId="+userId;
+        String url = "http://localhost:7003";
         return new ModelAndView(new RedirectView(url));
     }
 

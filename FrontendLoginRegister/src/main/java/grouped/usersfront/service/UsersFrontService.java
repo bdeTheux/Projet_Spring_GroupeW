@@ -35,7 +35,7 @@ public class UsersFrontService {
     public UsersFrontService(UsersFrontProxy proxy, CustomProperties props) {
         this.proxy = proxy;
         this.properties = props;
-        this.jwtAlgorithm = Algorithm.HMAC256(properties.getJWTSecret());
+        this.jwtAlgorithm = Algorithm.HMAC256("secret");
         this.verifier = JWT.require(jwtAlgorithm).withIssuer(properties.getJWTIssuer()).build();
     }
 

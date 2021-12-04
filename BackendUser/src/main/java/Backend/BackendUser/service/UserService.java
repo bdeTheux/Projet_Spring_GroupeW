@@ -4,11 +4,12 @@ import Backend.BackendUser.model.User;
 import Backend.BackendUser.repository.UserRepository;
 import java.lang.Iterable;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserService {
 
-    private static UserRepository repo;
+    private final UserRepository repo;
 
     public UserService(UserRepository repo){
         this.repo = repo;

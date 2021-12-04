@@ -43,15 +43,8 @@ public class UserController {
 
     //TODO
     @PostMapping
-    public ResponseEntity<Void> register(@RequestBody User user){
-        User u = service.saveUser(user);
-        if(u == null) return ResponseEntity.noContent().build();
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(u.getId())
-                .toUri();
-        return ResponseEntity.created(location).build();
+    public User register(@RequestBody User user){
+        return service.saveUser(user);
         //check JWT d'abord
         //User u = service.saveUser(user);
     }
