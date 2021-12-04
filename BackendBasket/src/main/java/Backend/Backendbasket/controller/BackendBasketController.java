@@ -42,12 +42,14 @@ public class BackendBasketController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("/{id}")
-    public String putBasket(@PathVariable("id") int id, @RequestParam() int nQuantity ) {
-        Basket nBasket = new Basket();
-        nBasket.setQuantity(nQuantity);
-        service.updateQuantity( id,nBasket);
-        System.out.println("update get " + service.findById(id));
+    @PutMapping("/update/{id}")
+    public String updateQuantity(@PathVariable("id") int id, @RequestBody Basket bas ) {
+        if (bas.getQuantity()<1) {
+            deleteProduct(id);
+        }else {
+            service.updateQuantity(id, bas);
+            System.out.println("update get " + service.findById(id));
+        }
         return "update";
     }
 
@@ -58,7 +60,7 @@ public class BackendBasketController {
         return "delete";
     }
     @GetMapping("/paid")
-    public void payBasket(@RequestParam() int userId){
+    public void payBasket(@RequestParam int userId){
         service.paid(userId);
 
     };

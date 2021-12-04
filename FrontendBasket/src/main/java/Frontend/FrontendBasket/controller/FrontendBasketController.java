@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import Frontend.FrontendBasket.model.Candy;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 
@@ -28,45 +29,66 @@ public class FrontendBasketController {
         this.userProxy=userProxy;
     }
 
-    @GetMapping("")
+    @GetMapping()
     public String displayList(@RequestParam()int userId,Model model){
         Iterable<Basket> baskets =  basketProxy.findAllByUserId(userId);
         ArrayList<BasketDTO> basketDTOs = new ArrayList<BasketDTO>();
         double totalPrice = 0;
 
         for (Basket bas :baskets) {
-            System.out.println(bas);
+
             Candy candy = productProxy.findById(bas.getProductId());
             basketDTOs.add(new BasketDTO(bas.getId(),bas.getQuantity(),bas.getUserId(),bas.getProductId(),candy.getName(),candy.getPrice()));
             totalPrice+=(bas.getQuantity()*candy.getPrice());
         }
-        System.out.println("troisieme");
+
+        model.addAttribute("uBasket",new Basket());
+        model.addAttribute("userId",userId);
+       model.addAttribute("totalPrice",totalPrice);
+
         model.addAttribute("totalPrice",totalPrice);
+
         model.addAttribute("basketDTOs",basketDTOs);
         return "basket";
     }
 
     @PostMapping("")
-    public ModelAndView createBasket(@ModelAttribute Basket basket) {
-        basketProxy.createBasket(basket);
+    public ModelAndView createBasket(@RequestHeader(name= "Authorization") String token,@ModelAttribute Basket basket) {
+        basketProxy.createBasket(token,basket);
         return new ModelAndView("redirect:/");
     }
-    @DeleteMapping("/delete/{id}")
-    public ModelAndView deleteProduct(@PathVariable("id") int id){
-         basketProxy.deleteProduct(id);
-        return new ModelAndView("redirect:/");
-    }
-    @GetMapping("/paid")
-    public ModelAndView payBasket(@RequestParam() int userId){
-        System.out.println("PAR LAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    @GetMapping("/paid/{userId}")
+    public ModelAndView payBasket(@PathVariable("userId") int userId,Model model){
         basketProxy.payBasket(userId);
-        return new ModelAndView("redirect:/paid");
-    }
-    @GetMapping("/{userId}")
-    public String detailsUser(@PathVariable("userId") int userId,Model model ){
-        User candy =userProxy.getUser(userId);
-        model.addAttribute("user", candy);
-        return "paid";
+        User user =userProxy.getUser(userId);
+        model.addAttribute("address", user.getAddress());
+        return new ModelAndView("paid");
     }
 
+    @PostMapping("/update/{id}")
+    public ModelAndView updateQuantity(@PathVariable("id") int id, @ModelAttribute Basket bas){
+
+        basketProxy.updateQuantity(id, bas);
+
+        String url = "http://localhost:7002/basket?userId="+bas.getUserId();
+        return new ModelAndView(new RedirectView(url));
+    }
+
+
+    //redirection navBar and other
+    @GetMapping("/candies")
+    public ModelAndView getCandies(){
+        String url = "http://localhost:7001/candies";
+        return new ModelAndView(new RedirectView(url));
+    }
+    @GetMapping("/profil/{userId}")
+    public ModelAndView getProfil(@PathVariable("userId") int userId){
+        String url = "http://localhost:8001/user/{id}(id="+userId+")";
+        return new ModelAndView(new RedirectView(url));
+    }
+    @GetMapping("/basket/{userId}")
+    public ModelAndView getBasket(@PathVariable("userId") int userId){
+        String url = "http://localhost:7002/basket?userId="+userId;
+        return new ModelAndView(new RedirectView(url));
+    }
 }

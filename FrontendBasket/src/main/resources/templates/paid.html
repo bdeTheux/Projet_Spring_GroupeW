@@ -17,24 +17,16 @@
     <link rel="icon" href="img/logo.svg" type="image/x-icon">
     <title>Charlie's - The Candies That Gives Power</title>
 
-    <!--navbar-->
-    <div class="w3-bar w3-teal">
-        <div class="w3-container">
-            <img class="image" src="img/logo.png" title="Logo"/>
-        </div>
-        <div class="w3-bar-item">Profil</div>
-        <div class="w3-bar-item">Candies</div> <!--lien vers les pages -->
-        <div class="w3-bar-item">Basket</div>
-    </div>
+
 </header>
 
 <!-- confirmation -->
 <div>
     <div class="container center">
         <p><h4>La commande sera livrée à l'adresse suivante : </h4>
-        <h4 th:text="${user.address}" class="align">/Adresse/</h4>
+        <h4 th:text="${address}" class="align">Adresse</h4>
         <h4>Merci pour votre commande !</h4></p>
-        <p><a href="Candies">retour à la page d'accueil</a></p>
+        <p><a th:href="@{basket/candies}">retour à la page d'accueil</a></p>
     </div>
 
 </div>

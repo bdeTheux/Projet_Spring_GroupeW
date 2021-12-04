@@ -22,16 +22,13 @@ public interface FrontendBasketProxy {
     Basket findById(@PathVariable("id") int id);
 
     @PostMapping("/basket")
-    void createBasket (Basket basket);
+    void createBasket (@RequestHeader(name= "Authorization") String token,Basket basket);
 
-    @DeleteMapping("/basket/{id}")
-    String deleteProduct(@PathVariable("id") int id);
-
-    @PutMapping("/basket/{id}")
-    void updateQuantity(@PathVariable("id") int id  , @RequestParam() int nquantity);
+    @PutMapping("/basket/update/{id}")
+    void updateQuantity(@PathVariable("id") int id  ,@RequestBody Basket bas);
 
     @GetMapping("/basket/paid")
-    void payBasket(int userId);
+    void payBasket(@RequestParam() int userId);
 
 
 
