@@ -44,12 +44,12 @@ public class DetailProductController {
         return "candy";
     }
 
-    @PostMapping("")
-    public ModelAndView createComment(@ModelAttribute Comment comment, @RequestParam(name="rating", required = false) int rating) {
+    @PostMapping("/{id}")
+    public ModelAndView createComment(@ModelAttribute Comment comment, @PathVariable("id") int candyId) {
         System.out.println(comment.toString());
         comment.setCreationDate(LocalDate.now());
         comment.setUserId(1);
-        comment.setCandyId(1);
+        comment.setCandyId(candyId);
         comment.setState(Comment.States.VALIDE.name());
         System.out.println(comment.toString());
         commentProxy.addComment(comment);

@@ -36,7 +36,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BackendBasket" options="-parameters" />
-      <module name="BackendProduct" options="-parameters --add-modules java.base" />
+      <module name="BackendProduct" options="-parameters" />
       <module name="BackendUser" options="-parameters" />
       <module name="Backendbasket" options="-parameters" />
       <module name="FrontendBasket" options="-parameters" />
