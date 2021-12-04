@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BackendBasket/BackendBasket.iml" filepath="$PROJECT_DIR$/BackendBasket/BackendBasket.iml" />
       <module fileurl="file://$PROJECT_DIR$/BackendProduct/BackendProduct.iml" filepath="$PROJECT_DIR$/BackendProduct/BackendProduct.iml" />
       <module fileurl="file://$PROJECT_DIR$/BackendUser/BackendUser.iml" filepath="$PROJECT_DIR$/BackendUser/BackendUser.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BackendBasket/Backendbasket.iml" filepath="$PROJECT_DIR$/BackendBasket/Backendbasket.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" filepath="$PROJECT_DIR$/FrontendBasket/FrontendBasket.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" filepath="$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendBasket/FrontendDetailProduct (1).iml" filepath="$PROJECT_DIR$/FrontendBasket/FrontendDetailProduct (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct (2).iml" filepath="$PROJECT_DIR$/FrontendDetailProduct/FrontendDetailProduct (2).iml" />
       <module fileurl="file://$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" filepath="$PROJECT_DIR$/FrontendListProduct/FrontendListProduct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BackendComment/commentsService.iml" filepath="$PROJECT_DIR$/BackendComment/commentsService.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaServer/eurekaServer.iml" filepath="$PROJECT_DIR$/eurekaServer/eurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FrontendLoginRegister/usersFront.iml" filepath="$PROJECT_DIR$/FrontendLoginRegister/usersFront.iml" />
     </modules>
   </component>
 </project>

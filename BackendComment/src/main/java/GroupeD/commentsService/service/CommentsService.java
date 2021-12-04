@@ -19,16 +19,16 @@ public class CommentsService {
         return repo.findByUserIdOrderByCreationDateAsc(id);
     }
 
-    public Iterable<Comment> findByVehicleId(int id) {
-        return repo.findByVehicleIdOrderByCreationDateAsc(id);
+    public Iterable<Comment> findByCandyId(int id) {
+        return repo.findByCandyIdOrderByCreationDateAsc(id);
     }
 
-    public Iterable<Comment> findByVehicleIdAndUserId(int vehicleId, int userId) {
-        return repo.findByVehicleIdAndUserIdOrderByCreationDateAsc(vehicleId, userId);
+    public Iterable<Comment> findByCandyIdAndUserId(int candyId, int userId) {
+        return repo.findByCandyIdAndUserIdOrderByCreationDateAsc(candyId, userId);
     }
 
-    public Iterable<Comment> findByVehicleIdExceptUserId(int vehicleId, int userId) {
-        return repo.findByVehicleIdAndUserIdNotOrderByCreationDateAsc(vehicleId, userId);
+    public Iterable<Comment> findByCandyIdExceptUserId(int candyId, int userId) {
+        return repo.findByCandyIdAndUserIdNotOrderByCreationDateAsc(candyId, userId);
     }
 
     public Comment saveComment(Comment comment) {
@@ -74,11 +74,11 @@ public class CommentsService {
         }
     }
 
-    public long countByVehicleId(int id) {
-        return repo.countByVehicleId(id);
+    public long countByCandyId(int id) {
+        return repo.countByCandyId(id);
     }
 
-    public double averageByVehicleId(int id) {
-        return repo.averageByVehicleId(id);
+    public double averageByCandyId(int id) {
+        return repo.averageByCandyId(id);
     }
 }
