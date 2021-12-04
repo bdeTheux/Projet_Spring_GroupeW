@@ -81,10 +81,11 @@
             <input type="text" class="form-control" placeholder="Write your comment here" th:field="*{text}">
             <label for="customRange2" class="form-label">Rating</label>
             <input type="range" class="form-range" min="0" max="5" id="customRange2" th:field="*{rating}">
-            <input type="submit" value="Submit">
             <input type="hidden" th:field="*{userId}" value="1">
             <input type="hidden" th:field="*{candyId}" th:value="${candy.id}">
             <input type="hidden" th:field="*{state}" value="valide">
+            <input type="submit" value="Submit">
+
         </form>
     </div>
     

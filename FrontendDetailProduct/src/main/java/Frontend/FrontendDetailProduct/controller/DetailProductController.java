@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +44,15 @@ public class DetailProductController {
         return "candy";
     }
 
-    @PostMapping
+    @PostMapping("")
     public ModelAndView createComment(@ModelAttribute Comment comment, @RequestParam(name="rating", required = false) int rating) {
+        System.out.println(comment.toString());
+        comment.setCreationDate(LocalDate.now());
+        comment.setUserId(1);
+        comment.setCandyId(1);
+        comment.setState(Comment.States.VALIDE.name());
+        System.out.println(comment.toString());
         commentProxy.addComment(comment);
-        return new ModelAndView("redirect:/" + comment.getCandyId());
+        return new ModelAndView("redirect:/candy/" + comment.getCandyId());
     }
 }

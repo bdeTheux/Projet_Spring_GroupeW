@@ -21,7 +21,7 @@ public interface CommentProxy {
     @GetMapping("/comments/{id}")
     Comment commentById(@PathVariable("id") int id);
 
-    @PostMapping
+    @PostMapping("/comments")
     Comment addComment(@RequestBody Comment comment);
 
     @PutMapping("/comments/{id}")

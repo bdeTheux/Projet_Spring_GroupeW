@@ -13,6 +13,7 @@ public class UserService {
     public UserService(UserRepository repo){
         this.repo = repo;
     }
+
     public Iterable<User> findAll() {
         return repo.findAll();
     }
