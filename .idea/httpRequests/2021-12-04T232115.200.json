@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "lastname": "Doe",
+    "firstname": "John",
+    "nickname": "pseudo",
+    "address": "5, Rue haute, Ville-basse, 1234",
+    "birthDate": "2000-12-12",
+    "email": "user@website.org",
+    "password": "$2a$10$ON/4mBRLTuejoSQQlVXfQO7tpT3eXyHUxdVh7VXAat9ePOuHJSHmm"
+  }
+]

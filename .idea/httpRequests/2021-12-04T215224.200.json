@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "text": "salut les gars",
+    "rating": 5,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 2,
+    "state": "valide"
+  }
+]

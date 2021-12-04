@@ -24,7 +24,7 @@
     </li>
     <li class="nav-item">
         <h5>
-            <a class="nav-link" href="">Users</a>
+            <a class="nav-link" href="http://localhost:7003">Users</a>
         </h5>
     </li>
 </ul>
@@ -51,7 +51,11 @@
             <h3>€</h3>
         </div>
         <div class="d-grid gap-2 d-md-block">
-            <button class="btn add-to-basket_button" type="button">Add to basket <i class="fa fa-shopping-cart"></i></button>
+            <form method="post" th:action="@{/candy/addToBasket/{id}(id=${candy.id})}" th:object="${basket}">
+                <input type="hidden" th:field="*{userId}" value="1">
+                <input type="hidden" th:field="*{productId}" th:value="${candy.id}">
+                <button type="submit" class="btn add-to-basket_button" >Add to basket <i class="fa fa-shopping-cart"></i></button>
+            </form>
         </div>
         <p class="category_product-details" th:text="${candy.category}">N/A</p>
     </div>
@@ -77,7 +81,7 @@
     </div>
 
     <div class="submit-comment">
-        <form method="post" th:action="@{/candy}" th:object="${comment}">
+        <form method="post" th:action="@{/candy/{id}(id=${candy.id})}" th:object="${comment}">
             <input type="text" class="form-control" placeholder="Write your comment here" th:field="*{text}">
             <label for="customRange2" class="form-label">Rating</label>
             <input type="range" class="form-range" min="0" max="5" id="customRange2" th:field="*{rating}">

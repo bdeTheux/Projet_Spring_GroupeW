@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "text": "nice candy",
+    "rating": 3,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 1,
+    "state": "valide"
+  },
+  {
+    "id": 2,
+    "text": "super!",
+    "rating": 2,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 2,
+    "state": "valide"
+  },
+  {
+    "id": 3,
+    "text": "wow",
+    "rating": 1,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 1,
+    "state": "valide"
+  },
+  {
+    "id": 4,
+    "text": "pas mal",
+    "rating": 3,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 0,
+    "state": "valide"
+  },
+  {
+    "id": 5,
+    "text": "salut les gars",
+    "rating": 4,
+    "creationDate": "2021-12-04",
+    "userId": 0,
+    "candyId": 0,
+    "state": "valide"
+  },
+  {
+    "id": 6,
+    "text": "j'adoreeee",
+    "rating": 5,
+    "creationDate": "2021-12-04",
+    "userId": 0,
+    "candyId": 0,
+    "state": "valide"
+  },
+  {
+    "id": 7,
+    "text": "j'adoreeee",
+    "rating": 5,
+    "creationDate": "2021-12-04",
+    "userId": 1,
+    "candyId": 1,
+    "state": "valide"
+  }
+]
